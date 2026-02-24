@@ -1,66 +1,67 @@
 import Link from 'next/link';
 
-const features = [
+const FEATURES = [
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
       </svg>
     ),
-    title: 'Sorun Tespiti',
-    desc: 'Endüstriyel ve akademik süreçlerdeki darboğazları yapay zeka perspektifiyle analiz ediyor, veri odaklı teşhisler koyuyoruz.',
-    href: '/odak-alanlari',
+    title: 'Sektör & Akademi Buluşması',
+    desc: 'Sanayi, lojistik, finans ve medya sektörlerinden temsilciler 1. gün 4 sunum ve panel oturumunda akademisyen ve öğrencilerle bir araya geliyor.',
+    link: '/program',
+    linkText: 'Programı Gör',
   },
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-        <path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
       </svg>
     ),
-    title: 'Yetenek Ölçümü',
-    desc: 'Mevcut insan kaynağının ve dijital altyapının yapay zeka adaptasyonuna uygunluğunu ölçen modern metrikler geliştiriyoruz.',
-    href: '/odak-alanlari',
+    title: '10 Paralel Workshop Salonu',
+    desc: '9 bölüm kendi uzmanlık alanında ayrı bir salon yürütüyor. Salon K tüm dış katılımcılara açık. Her workshop uygulamalı ve proje tabanlı.',
+    link: '/odak-alanlari',
+    linkText: 'Workshop\'ları Keşfet',
   },
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
       </svg>
     ),
-    title: 'Müfredat Entegrasyonu',
-    desc: 'Eğitim kurumlarında yapay zeka okuryazarlığını artırmak için yenilikçi müfredat modelleri ve çerçeve stratejileri oluşturuyoruz.',
-    href: '/odak-alanlari',
+    title: 'Proje Sunumu & Ödül',
+    desc: '3. gün tüm workshop çıktıları jüri önünde sunuluyor. En iyi 3 projeye teşvik ödülü, tüm katılımcılara ise resmi Katılım Belgesi veriliyor.',
+    link: '/program',
+    linkText: 'Detaylara Bak',
   },
 ];
 
-const ArrowIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-    <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
-  </svg>
-);
-
 export default function Features() {
   return (
-    <section className="section" id="features">
+    <section className="section section--alt">
       <div className="container">
-        <div className="section-header section-header--center reveal">
-          <div className="section-eyebrow">Etkinlik Hedefleri</div>
+        <div className="section-header section-header--center">
+          <div className="section-eyebrow">Çalıştay Hakkında</div>
           <h2 className="section-heading">
-            Yapay Zeka <span className="gradient-text">Vizyonumuz</span>
+            Neden <span className="gradient-text">Katılmalısınız?</span>
           </h2>
           <p className="section-desc">
-            Sektörel sorunlardan eğitim entegrasyonuna kadar kapsamlı bir çözüm haritası sunuyoruz.
+            Mucur MYO&apos;nun 9 bölümünü bir araya getiren, ücretsiz ve katılım belgeli 3 günlük yoğun bir etkinlik.
           </p>
         </div>
 
-        <div className="features-grid stagger">
-          {features.map(({ icon, title, desc, href }) => (
-            <div key={title} className="feature-card">
-              <div className="feature-icon">{icon}</div>
-              <h3>{title}</h3>
-              <p>{desc}</p>
-              <Link href={href} className="feature-link">
-                Daha fazla <ArrowIcon />
+        <div className="features-grid">
+          {FEATURES.map((f) => (
+            <div key={f.title} className="feature-card">
+              <div className="feature-icon">{f.icon}</div>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+              <Link href={f.link} className="feature-link">
+                {f.linkText}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
+                </svg>
               </Link>
             </div>
           ))}
