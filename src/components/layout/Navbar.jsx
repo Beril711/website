@@ -5,12 +5,12 @@ import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
-  { href: '/',              label: 'Ana Sayfa'    },
-  { href: '/program',       label: 'Program'      },
-  { href: '/konusmacilar',  label: 'Konuşmacılar' },
-  { href: '/odak-alanlari', label: 'Odak Alanları'},
-  { href: '/sponsorlar',    label: 'Sponsorlarımız'},
-  { href: '/iletisim',      label: 'İletişim'     },
+  { href: '/', label: 'Ana Sayfa' },
+  { href: '/program', label: 'Program' },
+  { href: '/konusmacilar', label: 'Konuşmacılar' },
+  { href: '/odak-alanlari', label: 'Odak Alanları' },
+  { href: '/sponsorlar', label: 'Sponsorlarımız' },
+  { href: '/iletisim', label: 'İletişim' },
 ];
 
 export default function Navbar() {
@@ -23,9 +23,9 @@ export default function Navbar() {
         <Link href="/" className="nav-brand">
           <div className="nav-brand-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
             </svg>
           </div>
           Mucur<span className="accent">AI</span>Days
@@ -42,9 +42,20 @@ export default function Navbar() {
 
         {/* AKSIYON BUTONLARI */}
         <div className="nav-actions">
-          <ThemeToggle />
+          {/* Desktop tema butonu */}
+          <div className="nav-theme-desktop">
+            <ThemeToggle />
+          </div>
 
-          {/* Hamburger */}
+          <Link href="/kayit" className="btn btn-primary nav-cta">
+            Kayıt Ol
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M5 12h14" />
+              <path d="M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+
+          {/* Hamburger — en sağda */}
           <button
             className="hamburger"
             aria-label="Menü"
@@ -53,26 +64,18 @@ export default function Navbar() {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               {menuOpen ? (
                 <>
-                  <line x1="18" y1="6" x2="6" y2="18"/>
-                  <line x1="6" y1="6" x2="18" y2="18"/>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
                 </>
               ) : (
                 <>
-                  <line x1="3" y1="6" x2="21" y2="6"/>
-                  <line x1="3" y1="12" x2="21" y2="12"/>
-                  <line x1="3" y1="18" x2="21" y2="18"/>
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
                 </>
               )}
             </svg>
           </button>
-
-          <Link href="/kayit" className="btn btn-primary">
-            Kayıt Ol
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M5 12h14"/>
-              <path d="M12 5l7 7-7 7"/>
-            </svg>
-          </Link>
         </div>
       </div>
 
@@ -92,6 +95,9 @@ export default function Navbar() {
           <Link href="/kayit" className="btn btn-primary" style={{ margin: '8px 20px' }} onClick={() => setMenuOpen(false)}>
             Kayıt Ol
           </Link>
+          <div className="mobile-menu-theme">
+            <ThemeToggle />
+          </div>
         </div>
       )}
     </nav>

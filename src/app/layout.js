@@ -22,8 +22,8 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider
           attribute="data-theme"
-          defaultTheme="dark"
-          enableSystem={false}
+          defaultTheme="system"
+          enableSystem={true}
         >
           <Topbar />
           <Navbar />
