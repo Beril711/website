@@ -7,7 +7,7 @@ const speakers = [
   { id: 2, name: 'Prof. Dr. Mustafa Kasım Karahocagil', role: 'Rektör', org: 'Kırşehir Ahi Evran Üniversitesi' },
   { id: 3, name: 'Prof. Dr. Murat Çanlı', role: 'Müdür', org: 'Mucur Meslek Yüksekokulu' },
   { id: 4, name: 'Doç. Dr. Yusuf Ziya Olpak', role: 'Yapay Zeka Yardımcısı', org: 'Kırşehir Ahi Evran Üniversitesi' },
-  { id: 5, name: 'Emre Yeşilbay', role: 'Kaymakam', org: 'Mucur Kaymakamlığı' },
+  { id: 5, name: 'Emre Yeşilbaş', role: 'Kaymakam', org: 'Mucur Kaymakamlığı' },
 ];
 
 function usePageSize() {

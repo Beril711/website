@@ -33,7 +33,7 @@ export const speakers = [
   },
   {
     id: 5,
-    name: "Emre Yeşilbay",
+    name: "Emre Yeşilbaş",
     role: "Kaymakam",
     org: "Mucur Kaymakamlığı",
     bio: "Mucur İlçe Kaymakamı olarak bölgesel kalkınma projelerinde aktif rol almakta, yapay zekanın kamu hizmetlerindeki potansiyeline destek vermektedir.",
