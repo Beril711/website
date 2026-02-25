@@ -14,7 +14,7 @@ function usePageSize() {
   const [cols, setCols] = useState(4);
   useEffect(() => {
     function update() {
-      if (window.innerWidth <= 480) setCols(1);
+      if (window.innerWidth <= 480) setCols(2);
       else if (window.innerWidth <= 768) setCols(2);
       else setCols(4);
     }
@@ -114,8 +114,9 @@ export default function SpeakersPreview() {
               flex: 1,
               display: 'grid',
               gridTemplateColumns: `repeat(${cols}, 1fr)`,
+              gridAutoRows: isMobile ? 'auto' : 280,
+              minHeight: isMobile ? 280 : 'auto',
               gap: isMobile ? 12 : 20,
-              minHeight: isMobile ? 'auto' : 220,
               width: '100%',
             }}
           >
@@ -131,7 +132,7 @@ export default function SpeakersPreview() {
                 <div className="speaker-org">{s.org}</div>
               </div>
             ))}
-            {!isMobile && Array.from({ length: cols - visible.length }).map((_, i) => (
+            {Array.from({ length: cols - visible.length }).map((_, i) => (
               <div key={`empty-${i}`} style={{ visibility: 'hidden' }} className="speaker-card" />
             ))}
           </div>
