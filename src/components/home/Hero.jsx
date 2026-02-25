@@ -8,7 +8,7 @@ const METRICS = [
   { value: 3, suffix: '', label: 'Gün' },
   { value: 9, suffix: '', label: 'Bölüm' },
   { value: 10, suffix: '', label: 'Workshop' },
-  { value: 250, suffix: '+', label: 'Katılımcı' },
+  { value: 1250, suffix: '+', label: 'Katılımcı' },
 ];
 
 function AnimatedMetric({ value, suffix, label, start }) {

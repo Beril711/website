@@ -5,12 +5,12 @@ import Footer from '@/components/layout/Footer';
 import './globals.css';
 
 export const metadata = {
-  title: 'Mucur AI Days — Yapay Zeka Günleri 2025',
+  title: 'Mucur AI Days — Yapay Zeka Günleri 2026',
   description: 'Akademi ve sektörün modern buluşma noktası. Yapay zekanın eğitimden endüstriye uzanan dönüştürücü gücünü bilimsel perspektifle keşfedin.',
   keywords: ['yapay zeka', 'AI', 'Mucur', 'Kırşehir', 'etkinlik', 'çalıştay'],
   openGraph: {
-    title: 'Mucur AI Days 2025',
-    description: 'Yapay Zeka Günleri — 20 Kasım 2025, Mucur/Kırşehir',
+    title: 'Mucur AI Days 2026',
+    description: 'Yapay Zeka Günleri — 27 Nisan 2026, Mucur/Kırşehir',
     locale: 'tr_TR',
     type: 'website',
   },

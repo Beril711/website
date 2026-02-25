@@ -9,6 +9,10 @@ module.exports = {
   // Tema yönetimi CSS var() üzerinden yapılıyor
   darkMode: false,
   theme: {
+    container: {
+      center: true,
+      padding: '1.5rem',
+    },
     extend: {},
   },
   plugins: [],

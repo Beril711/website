@@ -395,11 +395,11 @@ button {
 .hero-dots {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(75, 17, 168, 0.15) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: radial-gradient(ellipse 60% 50% at 50% 45%, black 20%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 45%, black 20%, transparent 70%);
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .hero-line {
@@ -408,9 +408,9 @@ button {
   right: 8%;
   width: 200px;
   height: 200px;
-  border: 1px solid var(--border);
+  border: 1.5px solid rgba(75, 17, 168, 0.2);
   border-radius: 50%;
-  opacity: 0.4;
+  opacity: 1;
   animation: heroSpin 40s linear infinite;
 }
 
@@ -421,9 +421,9 @@ button {
   left: -40px;
   right: -40px;
   bottom: -40px;
-  border: 1px solid var(--border);
+  border: 1.5px solid rgba(26, 93, 171, 0.15);
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 @keyframes heroSpin {
@@ -435,8 +435,6 @@ button {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 120px 0 100px;
-  max-width: 720px;
 }
 
 .hero-tag {
@@ -497,7 +495,7 @@ button {
 .hero-sub {
   font-size: 1.08rem;
   color: var(--text-secondary);
-  max-width: 520px;
+  max-width: 640px;
   line-height: 1.75;
   margin-bottom: 40px;
   opacity: 0;
@@ -766,6 +764,11 @@ button {
   border: 1px solid var(--border);
   background: var(--bg-card);
   transition: all 0.4s;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .speaker-card:hover {

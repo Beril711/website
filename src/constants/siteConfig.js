@@ -5,8 +5,8 @@ export const siteConfig = {
   url: 'https://mucur-ai-days.vercel.app',
 
   // ETKİNLİK BİLGİLERİ
-  date: '2025',
-  dateRange: '____/____/2025 – ____/____/2025',
+  date: '2026',
+  dateRange: '____/____/2026 – ____/____/2026',
   duration: '3 Gün',
   location: 'Mucur MYO, Kırşehir',
   venue: 'Kırşehir Ahi Evran Üniversitesi, Mucur Meslek Yüksekokulu Konferans Salonu ve Laboratuvarları',
@@ -35,11 +35,11 @@ export const siteConfig = {
 
   // NAVİGASYON
   navLinks: [
-    { href: '/',              label: 'Ana Sayfa'      },
-    { href: '/program',       label: 'Program'        },
-    { href: '/konusmacilar',  label: 'Konuşmacılar'   },
-    { href: '/odak-alanlari', label: 'Odak Alanları'  },
-    { href: '/sponsorlar',    label: 'Sponsorlarımız' },
-    { href: '/iletisim',      label: 'İletişim'       },
+    { href: '/', label: 'Ana Sayfa' },
+    { href: '/program', label: 'Program' },
+    { href: '/konusmacilar', label: 'Konuşmacılar' },
+    { href: '/odak-alanlari', label: 'Odak Alanları' },
+    { href: '/sponsorlar', label: 'Sponsorlarımız' },
+    { href: '/iletisim', label: 'İletişim' },
   ],
 };

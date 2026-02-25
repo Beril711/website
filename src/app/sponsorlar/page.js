@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Sponsorlarımız — Mucur AI Days 2025',
-  description: 'Mucur AI Days 2025 etkinliğini destekleyen kurum ve kuruluşlar. Sponsorluk fırsatları.',
+  title: 'Sponsorlarımız — Mucur AI Days 2026',
+  description: 'Mucur AI Days 2026 etkinliğini destekleyen kurum ve kuruluşlar. Sponsorluk fırsatları.',
 };
 
 const SPONSORS = {
@@ -113,7 +113,7 @@ function SponsorCard({ sponsor, size }) {
           <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="sponsor-card-link">
             Web Sitesi
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '12px', height: '12px' }}>
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
             </svg>
           </a>
         )}
@@ -130,7 +130,7 @@ export default function SponsorlarPage() {
         <div className="container page-hero-inner" style={{ textAlign: 'center' }}>
           <div className="breadcrumb" style={{ justifyContent: 'center' }}>
             <Link href="/">Ana Sayfa</Link>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6" /></svg>
             <span>Sponsorlarımız</span>
           </div>
           <h1 className="page-title">
@@ -209,7 +209,7 @@ export default function SponsorlarPage() {
                   {pkg.benefits.map(b => (
                     <li key={b}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ color: pkg.color }}>
-                        <polyline points="20 6 9 17 4 12"/>
+                        <polyline points="20 6 9 17 4 12" />
                       </svg>
                       {b}
                     </li>
@@ -226,7 +226,7 @@ export default function SponsorlarPage() {
             <Link href="/iletisim" className="btn btn-primary" style={{ padding: '13px 32px' }}>
               Sponsorluk Teklifi Gönderin
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '16px', height: '16px' }}>
-                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                <line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
             </Link>
           </div>
