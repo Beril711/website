@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 import { useCountUp, useInView } from '@/hooks/useCountUp';
 
 const METRICS = [
@@ -24,12 +25,19 @@ function AnimatedMetric({ value, suffix, label, start }) {
 
 export default function Hero() {
   const [ref, visible] = useInView(0.3);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const bgSrc = mounted && resolvedTheme === 'light'
+    ? '/logo/arkaplan beyaz.png'
+    : '/logo/arka plan.jpeg';
 
   return (
     <section className="hero">
       <div className="hero-banner">
         <Image
-          src="/logo/arka plan.jpeg"
+          src={bgSrc}
           alt=""
           fill
           priority
