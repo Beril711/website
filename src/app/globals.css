@@ -392,43 +392,45 @@ button {
   pointer-events: none;
 }
 
+.hero-banner {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.85) 100%);
+  z-index: 1;
+}
+
+[data-theme="dark"] .hero-banner-overlay {
+  background: linear-gradient(to bottom, rgba(13, 13, 43, 0.7) 0%, rgba(13, 13, 43, 0.85) 100%);
+}
+
+/* Dots — mobilde görünür, masaüstünde gizli */
 .hero-dots {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(75, 17, 168, 0.15) 1px, transparent 1px);
-  background-size: 32px 32px;
-  mask-image: radial-gradient(ellipse 60% 50% at 50% 45%, black 20%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 45%, black 20%, transparent 70%);
-  opacity: 1;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.35) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 65% at 50% 45%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 45%, black 30%, transparent 80%);
+  display: none;
 }
 
-.hero-line {
-  position: absolute;
-  top: 15%;
-  right: 8%;
-  width: 200px;
-  height: 200px;
-  border: 1.5px solid rgba(75, 17, 168, 0.2);
-  border-radius: 50%;
-  opacity: 1;
-  animation: heroSpin 40s linear infinite;
+[data-theme="dark"] .hero-dots {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1.2px, transparent 1.2px);
 }
 
-.hero-line::before {
-  content: '';
-  position: absolute;
-  top: -40px;
-  left: -40px;
-  right: -40px;
-  bottom: -40px;
-  border: 1.5px solid rgba(26, 93, 171, 0.15);
-  border-radius: 50%;
-  opacity: 1;
-}
+@media (max-width: 768px) {
+  .hero-banner {
+    display: none;
+  }
 
-@keyframes heroSpin {
-  to {
-    transform: rotate(360deg);
+  .hero-dots {
+    display: block;
   }
 }
 

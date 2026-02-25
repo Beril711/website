@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useCountUp, useInView } from '@/hooks/useCountUp';
 
 const METRICS = [
@@ -26,8 +27,17 @@ export default function Hero() {
 
   return (
     <section className="hero">
+      <div className="hero-banner">
+        <Image
+          src="/logo/arka plan.jpeg"
+          alt=""
+          fill
+          priority
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+        />
+        <div className="hero-banner-overlay" />
+      </div>
       <div className="hero-dots" />
-      <div className="hero-line" />
 
       <div className="container">
         <div className="hero-content">
