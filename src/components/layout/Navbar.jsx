@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
+import logoImg from '@/logo/logo2.png';
 
 const navLinks = [
   { href: '/', label: 'Ana Sayfa' },
@@ -21,13 +23,7 @@ export default function Navbar() {
       <div className="container nav-inner">
         {/* LOGO */}
         <Link href="/" className="nav-brand">
-          <div className="nav-brand-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z" />
-              <path d="M2 17l10 5 10-5" />
-              <path d="M2 12l10 5 10-5" />
-            </svg>
-          </div>
+          <Image src={logoImg} alt="Mucur AI Days" width={42} height={42} style={{ borderRadius: 10 }} />
           Mucur<span className="accent">AI</span>Days
         </Link>
 
