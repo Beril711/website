@@ -5,13 +5,6 @@ const quickLinks = [
   { href: '/program', label: 'Etkinlik Takvimi' },
   { href: '/konusmacilar', label: 'Konuşmacılar Hakkında' },
   { href: '/sponsorlar', label: 'Sponsorluk' },
-  { href: '/sss', label: 'SSS' },
-];
-
-const legalLinks = [
-  { href: '/hakkimizda', label: 'Hakkımızda' },
-  { href: '/iletisim', label: 'İletişim' },
-  { href: '/blog', label: 'Blog' },
 ];
 
 export default function Footer() {
@@ -89,13 +82,6 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span>© 2026 Mucur Yapay Zeka Günleri. Tüm hakları saklıdır.</span>
-          <div style={{ display: 'flex', gap: '16px' }}>
-            {legalLinks.map(({ href, label }) => (
-              <Link key={href} href={href} style={{ color: 'var(--text-tertiary)', fontSize: '0.74rem', transition: 'color 0.3s' }}>
-                {label}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
