@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const speakers = [
-  { id: 1, name: 'Dr. Öğr. Üyesi Şaban Fındık', role: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Bilgisayar Teknolojileri Bölüm Başkanı', org: 'Mucur Meslek Yüksekokulu' },
-  { id: 2, name: 'Prof. Dr. Mustafa Kasım Karahocagil', role: 'Kırşehir Ahi Evran Üniversitesi Rektörü', org: 'Kırşehir Ahi Evran Üniversitesi' },
-  { id: 3, name: 'Prof. Dr. Murat Çanlı', role: 'Kırşehir Ahi Evran Üniversitesi Müdürü', org: 'Mucur Meslek Yüksekokulu' },
-  { id: 4, name: 'Doç. Dr. Yusuf Ziya Olpak', role: 'Yapay Zeka Yardımcısı', org: 'Kırşehir Ahi Evran Üniversitesi' },
-  { id: 5, name: 'Emre Yeşilbaş', role: 'Mucur İlçe Kaymakamı', org: 'Mucur Kaymakamlığı' },
+  { id: 1, name: 'Dr. Öğr. Üyesi Şaban Fındık',          role: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Bilgisayar Teknolojileri Bölüm Başkanı',            org: 'Mucur Meslek Yüksekokulu' },
+  { id: 2, name: 'Prof. Dr. Mustafa Kasım Karahocagil',   role: 'Kırşehir Ahi Evran Üniversitesi Rektörü',                   org: 'Kırşehir Ahi Evran Üniversitesi' },
+  { id: 3, name: 'Prof. Dr. Murat Çanlı',                 role: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Müdürü',               org: 'Mucur Meslek Yüksekokulu' },
+  { id: 4, name: 'Doç. Dr. Yusuf Ziya Olpak',             role: 'Kırşehir Ahi Evran Üniversitesi Rektör Yardımcısı',        org: 'Kırşehir Ahi Evran Üniversitesi' },
+  { id: 5, name: 'Emre Yeşilbaş',                         role: 'Mucur İlçe Kaymakamı',           org: 'Mucur Kaymakamlığı, Kırşehir' },
+  { id: 6, name: 'Hasan Hüseyin Erden',                   role: 'Marta Teknoloji',                   org: 'Marta Teknoloji' },
+  { id: 7, name: 'Orsan Pınar',                           role: 'Mucur İlçe Milli Eğitim Müdürü', org: 'Mucur İlçe Milli Eğitim Müdürlüğü' },
+  { id: 8, name: 'Sercan Reyhanlı',                       role: 'Google Developer',                org: 'Google Developer Teamfly' },
 ];
 
 function usePageSize() {
@@ -74,7 +77,6 @@ export default function SpeakersPreview() {
   const totalPages = Math.ceil(speakers.length / cols);
   const visible = speakers.slice(page * cols, page * cols + cols);
 
-  // Sayfa sayısı değiştiğinde geçersiz sayfayı sıfırla
   useEffect(() => {
     if (page >= totalPages) setPage(Math.max(0, totalPages - 1));
   }, [cols, totalPages, page]);
