@@ -10,7 +10,7 @@ export const metadata = {
   keywords: ['yapay zeka', 'AI', 'Mucur', 'Kırşehir', 'etkinlik', 'çalıştay'],
   openGraph: {
     title: 'Mucur AI Days 2026',
-    description: 'Yapay Zeka Günleri — 27 Nisan 2026, Mucur/Kırşehir',
+    description: 'Yapay Zeka Günleri — 27-29 Nisan 2026, Mucur/Kırşehir',
     locale: 'tr_TR',
     type: 'website',
   },

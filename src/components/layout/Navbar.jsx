@@ -11,6 +11,8 @@ const navLinks = [
   { href: '/program', label: 'Program' },
   { href: '/konusmacilar', label: 'Konuşmacılar' },
   { href: '/odak-alanlari', label: 'Odak Alanları' },
+  { href: '/kurullar', label: 'Kurullar' },        // ← YENİ
+  { href: '/yonerge', label: 'Yönerge' },           // ← YENİ
   { href: '/sponsorlar', label: 'Sponsorlarımız' },
   { href: '/iletisim', label: 'İletişim' },
 ];
