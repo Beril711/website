@@ -94,7 +94,12 @@ function SponsorCard({ name }) {
     }}
       className="sponsor-box"
     >
-      <span className="sponsor-name">
+      <span style={{
+        fontSize: '0.95rem',
+        fontWeight: 800,
+        lineHeight: 1.3,
+        color: 'var(--text-primary)',
+      }}>
         {name}
       </span>
     </div>
