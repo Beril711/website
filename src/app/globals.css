@@ -1473,6 +1473,15 @@ button {
 
   .cta-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cta-card {
+    aspect-ratio: unset;
+  }
+
+  .cta-card-content {
+    padding: 28px;
   }
 
   .footer-grid {
@@ -1563,6 +1572,19 @@ button {
 
   .hero-line {
     display: none;
+  }
+
+  .cta-card-content {
+    padding: 24px;
+  }
+
+  .cta-card h3 {
+    font-size: 1.35rem;
+  }
+
+  .cta-card p {
+    font-size: 0.82rem;
+    margin-bottom: 18px;
   }
 }
 
