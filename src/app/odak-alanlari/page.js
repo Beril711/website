@@ -147,7 +147,7 @@ export default function OdakAlanlariPage() {
             <span>Odak Alanları</span>
           </div>
           <h1 className="page-title">
-            9 Bölüm, <span className="gradient-text">10 Workshop</span>
+            9 Bölüm, <span className="gradient-text">11 Workshop</span>
           </h1>
           <p className="page-desc">
             Mucur MYO&apos;nun tüm bölümleri kendi uzmanlık alanlarıyla örtüşen yapay zeka workshoplarıyla çalıştayda yer alıyor. Her workshop uygulamalı, interaktif ve proje tabanlı.
@@ -212,6 +212,26 @@ export default function OdakAlanlariPage() {
               <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>⏱ Süre: 2 saat 10 dk</span>
               <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>🛠 ChatGPT, Gemini, Microsoft Copilot</span>
               <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#10b981' }}>✅ Ön kayıt zorunludur</span>
+            </div>
+          </div>
+
+          {/* TEKNOFEST PROJE HAZIRLAMA */}
+          <div style={{ border: '1px solid rgba(167,139,250,0.2)', borderRadius: 'var(--radius-lg)', padding: '32px', background: 'rgba(167,139,250,0.04)', marginBottom: '48px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+              <span style={{ fontSize: '1.8rem' }}>🚀</span>
+              <div>
+                <div style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#A78BFA' }}>SALON L — HERKESE AÇIK</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)' }}>Teknofest Proje Hazırlama</div>
+              </div>
+            </div>
+            <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.7, margin: '0 0 12px' }}>
+              Teknofest yarışmalarına yönelik proje fikri geliştirme, başvuru süreci, takım oluşturma ve proje yönetimi konularında uygulamalı workshop. Tüm bölümlerden öğrenci ve öğretim elemanlarına açıktır.
+            </p>
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>👥 Kontenjan: 30 kişi</span>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>⏱ Süre: 2 saat</span>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>🛠 Teknofest Portal, Proje Yönetim Araçları</span>
+              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#A78BFA' }}>✅ Herkese Açık</span>
             </div>
           </div>
 

@@ -15,7 +15,7 @@ function AnimatedStat({ value, label, start }) {
 const STATS = [
     { value: 9, label: 'Bölüm' },
     { value: 14, label: 'Program' },
-    { value: 10, label: 'Workshop Salonu' },
+    { value: 11, label: 'Workshop Salonu' },
     { value: 25, label: 'Kişi/Salon Kontenjan' },
 ];
 

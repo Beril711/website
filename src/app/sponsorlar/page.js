@@ -9,36 +9,26 @@ const SPONSORS = {
   platinum: [
     {
       name: 'TÜBİTAK',
-      fullName: 'Türkiye Bilimsel ve Teknolojik Araştırma Kurumu',
-      desc: 'Türkiye\'nin önde gelen bilim ve teknoloji araştırma kurumu. Mucur AI Days\'in ana destekçisi olarak etkinliğimizin gerçekleşmesinde kritik rol üstlenmektedir.',
       website: 'https://tubitak.gov.tr',
     },
   ],
   gold: [
     {
       name: 'Kırşehir Ahi Evran Üniversitesi',
-      fullName: 'Kırşehir Ahi Evran Üniversitesi',
-      desc: 'Etkinliğimizin ev sahibi üniversitesi. Akademik altyapı ve organizasyon desteği ile Mucur AI Days\'i mümkün kılmaktadır.',
       website: 'https://ahievran.edu.tr',
     },
     {
       name: 'ASELSAN',
-      fullName: 'ASELSAN A.Ş.',
-      desc: 'Türkiye\'nin savunma sanayiinin öncü kuruluşu. Yapay zeka ve makine öğrenmesi alanındaki uygulamalarıyla etkinliğimize değerli katkılar sunmaktadır.',
       website: 'https://aselsan.com',
     },
   ],
   silver: [
     {
       name: 'Mucur Belediyesi',
-      fullName: 'Mucur Belediye Başkanlığı',
-      desc: 'İlçemizin gelişimine katkı sağlayan Mucur Belediyesi, etkinliğimize lojistik ve organizasyonel destek vermektedir.',
       website: '#',
     },
     {
       name: 'Kırşehir İl Özel İdaresi',
-      fullName: 'Kırşehir İl Özel İdaresi',
-      desc: 'Kırşehir\'in kalkınmasına öncülük eden İl Özel İdaresi, etkinliğimizin bölgesel destekçisidir.',
       website: '#',
     },
   ],
@@ -88,39 +78,40 @@ const PACKAGES = [
   },
 ];
 
-function SponsorCard({ sponsor, size }) {
-  const isLarge = size === 'large';
-  const isMedium = size === 'medium';
-
+function SponsorCard({ name }) {
   return (
-    <div className={`sponsor-card sponsor-card--${size}`}>
-      <div className="sponsor-card-logo">
-        <span style={{
-          fontSize: isLarge ? '1.8rem' : isMedium ? '1.4rem' : '1.1rem',
-          fontWeight: 800,
-          background: 'linear-gradient(135deg, var(--purple), var(--blue))',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-        }}>
-          {sponsor.name}
-        </span>
-      </div>
-      <div className="sponsor-card-body">
-        <div className="sponsor-card-fullname">{sponsor.fullName}</div>
-        <p className="sponsor-card-desc">{sponsor.desc}</p>
-        {sponsor.website !== '#' && (
-          <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="sponsor-card-link">
-            Web Sitesi
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '12px', height: '12px' }}>
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
-        )}
-      </div>
+    <div style={{
+      border: '1px solid var(--border)',
+      borderRadius: 'var(--radius)',
+      background: 'var(--bg-card)',
+      padding: '28px 20px',
+      display: 'grid',
+      placeItems: 'center',
+      textAlign: 'center',
+      transition: 'all 0.35s',
+      cursor: 'default',
+      minHeight: '100px',
+    }}
+      className="sponsor-box"
+    >
+      <span className="sponsor-name">
+        {name}
+      </span>
     </div>
   );
 }
+
+const ALL_SPONSORS = [
+  ...SPONSORS.platinum.map(s => s.name),
+  ...SPONSORS.gold.map(s => s.name),
+  ...SPONSORS.silver.map(s => s.name),
+];
+
+const sponsorGrid = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(5, 1fr)',
+  gap: '16px',
+};
 
 export default function SponsorlarPage() {
   return (
@@ -150,8 +141,8 @@ export default function SponsorlarPage() {
               ✦ Platin Sponsor
             </div>
           </div>
-          <div className="sponsor-tier-grid sponsor-tier-grid--platinum">
-            {SPONSORS.platinum.map(s => <SponsorCard key={s.name} sponsor={s} size="large" />)}
+          <div style={sponsorGrid}>
+            {SPONSORS.platinum.map(s => <SponsorCard key={s.name} name={s.name} />)}
           </div>
         </div>
       </section>
@@ -164,8 +155,8 @@ export default function SponsorlarPage() {
               ★ Altın Sponsorlar
             </div>
           </div>
-          <div className="sponsor-tier-grid sponsor-tier-grid--gold">
-            {SPONSORS.gold.map(s => <SponsorCard key={s.name} sponsor={s} size="medium" />)}
+          <div style={sponsorGrid}>
+            {SPONSORS.gold.map(s => <SponsorCard key={s.name} name={s.name} />)}
           </div>
         </div>
       </section>
@@ -178,8 +169,8 @@ export default function SponsorlarPage() {
               ◆ Gümüş Sponsorlar
             </div>
           </div>
-          <div className="sponsor-tier-grid sponsor-tier-grid--silver">
-            {SPONSORS.silver.map(s => <SponsorCard key={s.name} sponsor={s} size="small" />)}
+          <div style={sponsorGrid}>
+            {SPONSORS.silver.map(s => <SponsorCard key={s.name} name={s.name} />)}
           </div>
         </div>
       </section>
