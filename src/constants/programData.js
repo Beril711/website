@@ -114,18 +114,6 @@ export const GUN1 = [
     speaker: 'Sanayi Temsilcisi',
   },
   {
-    id: 'g1-10',
-    time: '14:15–15:00',
-    duration: '45 dk',
-    type: 'konusma',
-    typeLabel: 'Sektör Sunumu',
-    title: 'Tarımda Yapay Zeka Uygulamaları',
-    location: 'Konferans Salonu',
-    desc: 'Hassas tarım, drone teknolojileri, verim tahmini ve akıllı sulama sistemlerinde yapay zeka kullanımı. Türkiye tarımının dijital geleceği.',
-    speaker: 'Doç. Dr. Nesibe Kantar',
-    highlight: true,
-  },
-  {
     id: 'g1-11',
     time: '15:00–15:15',
     duration: '15 dk',

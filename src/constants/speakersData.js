@@ -95,12 +95,4 @@ export const speakers = [
     bio: "Çamaş firmasının genel müdürü olarak üretim ve lojistik süreçlerinde dijital dönüşüm ve yapay zeka projelerini yönetmektedir.",
     topics: ["Üretim Yönetimi", "Dijital Dönüşüm"],
   },
-  {
-    id: 13,
-    name: "Doç. Dr. Nesibe Kantar",
-    role: "Akademisyen",
-    org: "Üniversite",
-    bio: "Yapay zeka ve veri bilimi alanında akademik çalışmalar yürütmektedir. Özellikle tarımda yapay zeka uygulamaları ve hassas tarım teknolojileri konusunda uzmanlaşmıştır.",
-    topics: ["Tarımda Yapay Zeka", "Veri Bilimi"],
-  },
 ];
