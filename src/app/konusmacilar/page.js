@@ -28,7 +28,7 @@ export default function KonusmacilarPage() {
         <div className="container">
           <div style={{ marginBottom: '48px' }}>
             <div className="section-eyebrow">Tüm Konuşmacılar</div>
-            <h2 className="section-heading">5 <span className="gradient-text">Uzman</span> İsim</h2>
+            <h2 className="section-heading">{speakers.length} <span className="gradient-text">Uzman</span> İsim</h2>
           </div>
           <div className="speakers-grid-full">
             {speakers.map(s => <SpeakerCard key={s.id} speaker={s} />)}

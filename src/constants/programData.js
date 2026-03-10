@@ -80,7 +80,7 @@ export const GUN1 = [
     title: 'Panel: Yapay Zeka — Bugünü ve Yarını',
     location: 'Konferans Salonu',
     desc: 'Yapay zekanın eğitim, sanayi, tarım ve kamu sektöründeki dönüştürücü etkisi üzerine kapsamlı panel. Farklı disiplinlerden uzmanlar Türkiye\'nin AI vizyonunu tartışıyor.',
-    speaker: 'Prof. Dr. Mustafa Kasım Karahocagil (Moderatör)',
+    speaker: 'Prof. Dr. Mustafa Kasım Karahocagil',
     panelists: [
       'Prof. Dr. Süleyman Ersöz — Kırıkkale Üniversitesi Mühendislik Fakültesi',
       'BTK Akademi Temsilcisi',
