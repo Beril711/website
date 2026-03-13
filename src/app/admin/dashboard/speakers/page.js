@@ -144,10 +144,22 @@ export default function AdminSpeakers() {
         </div>
         <button
           onClick={handleNew}
-          className="btn-primary-link"
-          style={{ border: "none", cursor: "pointer", fontSize: "0.82rem" }}
+          style={{
+            width: 42,
+            height: 42,
+            borderRadius: 12,
+            border: "none",
+            background: "linear-gradient(135deg, var(--purple), var(--blue))",
+            color: "#fff",
+            display: "grid",
+            placeItems: "center",
+            cursor: "pointer",
+            transition: "all 0.3s",
+            boxShadow: "0 2px 12px var(--glow-1)",
+          }}
+          title="Yeni Ekle"
         >
-          <Plus size={16} /> Yeni Ekle
+          <Plus size={20} />
         </button>
       </div>
 

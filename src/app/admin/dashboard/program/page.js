@@ -127,8 +127,24 @@ export default function AdminProgram() {
           <h1 style={{ fontSize: "1.3rem", fontWeight: 800, color: "var(--text-primary)" }}>Program</h1>
           <p style={{ fontSize: "0.85rem", color: "var(--text-tertiary)" }}>{sessions.length} oturum kayıtlı</p>
         </div>
-        <button onClick={handleNew} className="btn-primary-link" style={{ border: "none", cursor: "pointer", fontSize: "0.82rem" }}>
-          <Plus size={16} /> Yeni Oturum
+        <button
+          onClick={handleNew}
+          style={{
+            width: 42,
+            height: 42,
+            borderRadius: 12,
+            border: "none",
+            background: "linear-gradient(135deg, var(--purple), var(--blue))",
+            color: "#fff",
+            display: "grid",
+            placeItems: "center",
+            cursor: "pointer",
+            transition: "all 0.3s",
+            boxShadow: "0 2px 12px var(--glow-1)",
+          }}
+          title="Yeni Ekle"
+        >
+          <Plus size={20} />
         </button>
       </div>
 
