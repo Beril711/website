@@ -54,7 +54,7 @@ export default function AdminSpeakers() {
     if (!form.name.trim()) return;
 
     if (editing === "new") {
-      await supabase.from("speakers").insert([
+      const { error } = await supabase.from("speakers").insert([
         {
           name: form.name,
           role: form.role,
@@ -65,8 +65,9 @@ export default function AdminSpeakers() {
           visible: form.visible,
         },
       ]);
+      if (error) { alert("Ekleme hatasi: " + error.message + " | Code: " + error.code); return; }
     } else {
-      await supabase
+      const { error } = await supabase
         .from("speakers")
         .update({
           name: form.name,
@@ -78,6 +79,7 @@ export default function AdminSpeakers() {
           visible: form.visible,
         })
         .eq("id", editing);
+      if (error) { alert("Guncelleme hatasi: " + error.message + " | Code: " + error.code); return; }
     }
 
     setEditing(null);
