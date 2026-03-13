@@ -4769,3 +4769,70 @@ a.ct-info-value:hover {
     grid-template-columns: 28px 1fr 48px;
   }
 }
+/* ══════════════════════════════════════════
+   ADMIN PANEL — Form Butonları
+   ══════════════════════════════════════════ */
+
+.btn-primary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 12px var(--glow-1);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--glow-1);
+  opacity: 0.92;
+}
+
+.btn-primary-link:active {
+  transform: translateY(0);
+}
+
+.btn-primary-link:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-ghost-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-ghost-link:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.btn-ghost-link:active {
+  transform: translateY(0);
+}
