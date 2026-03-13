@@ -15,6 +15,8 @@ import {
   Menu,
   X,
   Layers,
+  Target,
+  ScrollText,
 } from "lucide-react";
 
 const menuItems = [
@@ -22,6 +24,9 @@ const menuItems = [
   { label: "Konuşmacılar", href: "/admin/dashboard/speakers", icon: Users },
   { label: "Program", href: "/admin/dashboard/program", icon: Calendar },
   { label: "Sponsorlar", href: "/admin/dashboard/sponsors", icon: Award },
+  { label: "Odak Alanları", href: "/admin/dashboard/odak-alanlari", icon: Target },
+  { label: "Kurullar", href: "/admin/dashboard/kurullar", icon: Users },
+  { label: "Yönerge", href: "/admin/dashboard/yonerge", icon: ScrollText },
   { label: "Başvurular", href: "/admin/dashboard/registrations", icon: ClipboardList },
   { label: "Mesajlar", href: "/admin/dashboard/messages", icon: Mail },
   { label: "Ayarlar", href: "/admin/dashboard/settings", icon: Settings },
