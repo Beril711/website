@@ -1,8 +1,6 @@
 import { ThemeProvider } from 'next-themes';
-import Topbar from '@/components/layout/Topbar';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import './globals.css';
+import LayoutShell from '@/components/layout/LayoutShell';
 
 export const metadata = {
   title: 'Mucur AI Days — Yapay Zeka Günleri 2026',
@@ -25,12 +23,7 @@ export default function RootLayout({ children }) {
           defaultTheme="system"
           enableSystem={true}
         >
-          <Topbar />
-          <Navbar />
-          <main>
-            {children}
-          </main>
-          <Footer />
+          <LayoutShell>{children}</LayoutShell>
         </ThemeProvider>
       </body>
     </html>
