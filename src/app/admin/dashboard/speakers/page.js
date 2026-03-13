@@ -87,7 +87,12 @@ export default function AdminSpeakers() {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Bu konuşmacıyı silmek istediğinize emin misiniz?")) return;
-    await supabase.from("speakers").delete().eq("id", id);
+    const { error } = await supabase.from("speakers").delete().eq("id", id);
+    if (error) {
+      alert("Silme hatası: " + error.message);
+      console.error("Delete error:", error);
+      return;
+    }
     fetchSpeakers();
   };
 
