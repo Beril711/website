@@ -221,7 +221,7 @@ export default function KayitPage() {
                   <div className="kayit-info-item"><span>Format</span><strong>Yüz yüze</strong></div>
                   <div className="kayit-info-item"><span>Katılım</span><strong>Ücretsiz</strong></div>
                   <div className="kayit-info-item"><span>Belge</span><strong>Katılım Sertifikası</strong></div>
-                  <div className="kayit-info-item"><span>Kayıt</span><a href="mailto:myo.calistay@ahievran.edu.tr" style={{ color: 'var(--purple)', fontWeight: 600, fontSize: '0.8rem' }}>myo.calistay@ahievran.edu.tr</a></div>
+                  <div className="kayit-info-item"><span>Kayıt</span><a href="mailto:ahiaigunleri@ahievran.edu.tr" style={{ color: 'var(--purple)', fontWeight: 600, fontSize: '0.8rem' }}>ahiaigunleri@ahievran.edu.tr</a></div>
                 </div>
               </div>
 

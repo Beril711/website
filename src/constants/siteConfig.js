@@ -15,7 +15,7 @@ export const siteConfig = {
 
   // İLETİŞİM
   contact: {
-    email: 'myo.calistay@ahievran.edu.tr',
+    email: 'ahiaigunleri@ahievran.edu.tr',
     etikEmail: 'etik@mucurmyo.edu.tr',
     university: 'Kırşehir Ahi Evran Üniversitesi',
     school: 'Mucur Meslek Yüksekokulu',
