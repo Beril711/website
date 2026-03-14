@@ -1,37 +1,17 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { GUN1, GUN2, GUN3 } from '@/constants/programData';
 import DayTabs from '@/components/ui/DayTabs';
 import { useCountUp, useInView } from '@/hooks/useCountUp';
+import { supabase } from '@/lib/supabase';
 
 const TYPE_COLORS = {
   opening: { bg: 'rgba(148,163,184,0.08)', border: 'rgba(148,163,184,0.2)', text: '#94a3b8' },
   konusma: { bg: 'rgba(167,139,250,0.08)', border: 'rgba(167,139,250,0.2)', text: '#A78BFA' },
-  panel: { bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', text: '#10b981' },
-  workshop: { bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.2)', text: '#F59E0B' },
-  arasol: { bg: 'rgba(100,116,139,0.05)', border: 'rgba(100,116,139,0.1)', text: '#64748b' },
+  panel:   { bg: 'rgba(16,185,129,0.08)',  border: 'rgba(16,185,129,0.2)',  text: '#10b981' },
+  workshop:{ bg: 'rgba(245,158,11,0.08)',  border: 'rgba(245,158,11,0.2)',  text: '#F59E0B' },
+  arasol:  { bg: 'rgba(100,116,139,0.05)', border: 'rgba(100,116,139,0.1)', text: '#64748b' },
 };
-
-const GUNS = [
-  { key: 'gun1', items: GUN1 },
-  { key: 'gun2', items: GUN2 },
-  { key: 'gun3', items: GUN3 },
-];
-
-const WORKSHOPS = [
-  { salon: 'A', title: 'YZ Destekli Grafik ve 3B Tasarım', bolum: 'Bilgisayar Teknolojileri', egitmen: 'Öğr. Gör. Hüsnü Karadağ', arac: 'Stable Diffusion, Midjourney, Adobe Firefly' },
-  { salon: 'B', title: 'Web Geliştirmede Yapay Zekâ', bolum: 'Bilgisayar Teknolojileri', egitmen: 'Öğr. Gör. Hüsnü Karadağ', arac: 'GitHub Copilot, ChatGPT API, Cursor IDE' },
-  { salon: 'C', title: 'Kimya Endüstrisinde YZ Uygulamaları', bolum: 'Kimya ve Kimyasal İşlem Teknolojileri', egitmen: 'Bölüm Başkanı', arac: 'Python (scikit-learn), ChemDraw AI' },
-  { salon: 'D', title: 'Afet Yönetiminde YZ: Erken Uyarı ve Risk Analizi', bolum: 'Mülkiyet Koruma ve Güvenlik', egitmen: 'Bölüm Başkanı', arac: 'ESRI ArcGIS AI, Python (LSTM)' },
-  { salon: 'E', title: 'Fintech ve YZ: Kredi, Risk ve Dolandırıcılık Tespiti', bolum: 'Finans – Bankacılık ve Sigortacılık', egitmen: 'Bölüm Başkanı', arac: 'Python (XGBoost, SHAP)' },
-  { salon: 'F', title: 'Generatif YZ ile Grafik Tasarım', bolum: 'Tasarım Bölümü', egitmen: 'Bölüm Başkanı', arac: 'Canva AI, Adobe Firefly, DALL-E 3' },
-  { salon: 'G', title: 'Havacılık ve Posta Hizmetlerinde YZ', bolum: 'Ulaştırma Hizmetleri', egitmen: 'Bölüm Başkanı', arac: 'Python (OR-Tools), IBM Decision Optimization' },
-  { salon: 'H', title: 'Medya Üretiminde Yapay Zekâ', bolum: 'Görsel, İşitsel Teknikler ve Medya', egitmen: 'Bölüm Başkanı', arac: 'Runway ML, ElevenLabs, CapCut AI' },
-  { salon: 'I', title: 'Lojistik 4.0: YZ ile Tedarik Zinciri Yönetimi', bolum: 'Yönetim ve Organizasyon', egitmen: 'Bölüm Başkanı', arac: 'Python (Prophet), SAP AI, Power BI AI' },
-  { salon: 'J', title: 'Oyun Geliştirmede YZ: NPC ve Prosedürel İçerik', bolum: 'Yazılım, Uygulama Geliştirme ve Çözümleme', egitmen: 'Bölüm Başkanı', arac: 'Unity ML-Agents, Promethean AI' },
-  { salon: 'K', title: 'Açık Seans — Temel YZ Araçları', bolum: 'Tüm Bölümler / Dış Katılımcılar', egitmen: 'Gönüllü Öğr. El.', arac: 'ChatGPT, Gemini, Microsoft Copilot', acik: true },
-];
 
 const STATS = [
   { value: 3, label: 'Gün' },
@@ -73,7 +53,7 @@ function SessionRow({ item }) {
       <div className="prog-card" style={{ borderColor: item.highlight ? color.border : 'var(--border)' }}>
         <div className="prog-card-top">
           <span className="prog-badge" style={{ background: color.bg, borderColor: color.border, color: color.text }}>
-            {item.typeLabel}
+            {item.type_label || item.typeLabel}
           </span>
           {item.location && <span className="prog-location">📍 {item.location}</span>}
         </div>
@@ -91,15 +71,52 @@ function SessionRow({ item }) {
 }
 
 export default function ProgramPage() {
+  const [sessions, setSessions] = useState([]);
+  const [workshops, setWorkshops] = useState([]);
   const [activeGun, setActiveGun] = useState('gun1');
   const [showWS, setShowWS] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [statsRef, statsVisible] = useInView(0.3);
 
-  const activeData = GUNS.find(g => g.key === activeGun);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data: sessionData } = await supabase
+        .from('program_sessions')
+        .select('*')
+        .order('sort_order', { ascending: true });
+
+      const { data: wsData } = await supabase
+        .from('odak_alanlari')
+        .select('*')
+        .eq('visible', true)
+        .order('sort_order', { ascending: true });
+
+      setSessions(sessionData || []);
+
+      // Workshop listesini odak_alanlari'ndan oluştur
+      const wsList = [];
+      (wsData || []).forEach(b => {
+        (b.workshops || []).forEach(w => {
+          wsList.push({
+            salon: w.salon,
+            title: w.title,
+            bolum: b.bolum,
+            egitmen: '',
+            arac: w.araclar,
+          });
+        });
+      });
+      setWorkshops(wsList);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  const gunMap = { gun1: 1, gun2: 2, gun3: 3 };
+  const activeItems = sessions.filter(s => s.gun === gunMap[activeGun]);
 
   return (
     <>
-      {/* HERO */}
       <div className="page-hero">
         <div className="container page-hero-inner">
           <div className="breadcrumb">
@@ -120,17 +137,19 @@ export default function ProgramPage() {
       </div>
 
       <div className="container" style={{ padding: '40px 40px 100px' }}>
-
         <DayTabs activeDay={activeGun} onChange={setActiveGun} />
 
-        {/* PROGRAM AKIŞI */}
         <div className="prog-flow">
-          {activeData.items.map(item => (
-            <SessionRow key={item.id} item={item} />
-          ))}
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-tertiary)' }}>Yükleniyor...</div>
+          ) : activeItems.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-tertiary)' }}>Bu güne ait program henüz eklenmemiş.</div>
+          ) : (
+            activeItems.map(item => <SessionRow key={item.id} item={item} />)
+          )}
         </div>
 
-        {/* WORKSHOP DETAY BÖLÜMÜ */}
+        {/* WORKSHOP DETAY */}
         <div className="prog-ws-section">
           <button className="prog-ws-toggle" onClick={() => setShowWS(!showWS)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '20px', height: '20px', color: '#F59E0B' }}>
@@ -141,19 +160,16 @@ export default function ProgramPage() {
               <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
-
           {showWS && (
             <div className="prog-ws-grid">
-              {WORKSHOPS.map(ws => (
-                <div key={ws.salon} className={`prog-ws-card${ws.acik ? ' prog-ws-card--acik' : ''}`}>
+              {workshops.map(ws => (
+                <div key={ws.salon} className="prog-ws-card">
                   <div className="prog-ws-salon">Salon {ws.salon}</div>
                   <div className="prog-ws-title">{ws.title}</div>
                   <div className="prog-ws-bolum">{ws.bolum}</div>
                   <div className="prog-ws-meta">
-                    <span>👤 {ws.egitmen}</span>
                     <span>🛠 {ws.arac}</span>
-                    {!ws.acik && <span>👥 Max. 25 kişi · 3 saat</span>}
-                    {ws.acik && <span>👥 Max. 30 kişi · 2 saat 10 dk · Herkese Açık</span>}
+                    <span>👥 Max. 25 kişi · 3 saat</span>
                   </div>
                 </div>
               ))}
@@ -161,7 +177,6 @@ export default function ProgramPage() {
           )}
         </div>
 
-        {/* CTA */}
         <div className="odak-cta" style={{ marginTop: '60px' }}>
           <h3>Yerinizi Ayırtın</h3>
           <p>Workshoplar sınırlı kontenjanla sunulmaktadır. Ücretsiz kaydınızı oluşturun.</p>
@@ -175,7 +190,6 @@ export default function ProgramPage() {
             <Link href="/iletisim" className="btn btn-ghost" style={{ padding: '13px 32px' }}>İletişime Geçin</Link>
           </div>
         </div>
-
       </div>
     </>
   );

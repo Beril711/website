@@ -1,16 +1,28 @@
+'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import SpeakerCard from '@/components/konusmacilar/SpeakerCard';
-import { speakers } from '@/constants/speakersData';
-
-export const metadata = {
-  title: 'Konuşmacılar — Mucur AI Days 2026',
-  description: 'Mucur AI Days 2026 etkinliği konuşmacıları.',
-};
+import { supabase } from '@/lib/supabase';
 
 export default function KonusmacilarPage() {
+  const [speakers, setSpeakers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSpeakers = async () => {
+      const { data } = await supabase
+        .from('speakers')
+        .select('*')
+        .eq('visible', true)
+        .order('sort_order', { ascending: true });
+      setSpeakers(data || []);
+      setLoading(false);
+    };
+    fetchSpeakers();
+  }, []);
+
   return (
     <>
-      {/* PAGE HERO */}
       <div className="page-hero">
         <div className="container page-hero-inner">
           <div className="breadcrumb">
@@ -23,16 +35,19 @@ export default function KonusmacilarPage() {
         </div>
       </div>
 
-      {/* KONUŞMACILA GRID */}
       <section style={{ padding: '0 0 100px' }}>
         <div className="container">
           <div style={{ marginBottom: '48px' }}>
             <div className="section-eyebrow">Tüm Konuşmacılar</div>
-            <h2 className="section-heading">{speakers.length} <span className="gradient-text">Uzman</span> İsim</h2>
+            <h2 className="section-heading">{loading ? '...' : speakers.length} <span className="gradient-text">Uzman</span> İsim</h2>
           </div>
-          <div className="speakers-grid-full">
-            {speakers.map(s => <SpeakerCard key={s.id} speaker={s} />)}
-          </div>
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-tertiary)' }}>Yükleniyor...</div>
+          ) : (
+            <div className="speakers-grid-full">
+              {speakers.map(s => <SpeakerCard key={s.id} speaker={s} />)}
+            </div>
+          )}
         </div>
       </section>
     </>

@@ -1,142 +1,28 @@
+'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import OdakStats from '@/components/odak/OdakStats';
-
-export const metadata = {
-  title: 'Odak Alanları — Mucur AI Days Çalıştayı',
-  description: 'Mucur MYO Yapay Zeka Günleri Çalıştayı\'nın 9 bölüm bazlı odak alanları ve workshop konuları.',
-};
-
-const BOLUMLER = [
-  {
-    no: '01',
-    emoji: '🖥️',
-    bolum: 'Bilgisayar Teknolojileri Bölümü',
-    programlar: ['Bilgisayar Destekli Tasarım ve Animasyon', 'Web Tasarımı ve Kodlama'],
-    wsCount: 2,
-    tag: '2 Workshop',
-    tagColor: '#A78BFA',
-    tagBg: 'rgba(167,139,250,0.1)',
-    tagBorder: 'rgba(167,139,250,0.2)',
-    workshops: [
-      { salon: 'A', title: 'YZ Destekli Grafik ve 3B Tasarım', araclar: 'Stable Diffusion, Midjourney, Adobe Firefly', desc: 'Üretken tasarım; YZ tabanlı animasyon ve 3B modelleme araçları.' },
-      { salon: 'B', title: 'Web Geliştirmede Yapay Zekâ', araclar: 'GitHub Copilot, ChatGPT API, Cursor IDE', desc: 'YZ destekli front-end/back-end geliştirme ve hata ayıklama.' },
-    ],
-  },
-  {
-    no: '02',
-    emoji: '⚗️',
-    bolum: 'Kimya ve Kimyasal İşlem Teknolojileri Bölümü',
-    programlar: ['Kimya Teknolojisi'],
-    wsCount: 1,
-    tag: '1 Workshop',
-    tagColor: '#10b981',
-    tagBg: 'rgba(16,185,129,0.08)',
-    tagBorder: 'rgba(16,185,129,0.2)',
-    workshops: [
-      { salon: 'C', title: 'Kimya Endüstrisinde YZ Uygulamaları', araclar: 'Python (scikit-learn), ChemDraw AI, Mendeleev AI', desc: 'Proses optimizasyonu, kalite kontrol ve malzeme keşfinde yapay zeka.' },
-    ],
-  },
-  {
-    no: '03',
-    emoji: '🛡️',
-    bolum: 'Mülkiyet Koruma ve Güvenlik Bölümü',
-    programlar: ['Acil Durum ve Afet Yönetimi', 'Sivil Savunma ve İtfaiyecilik'],
-    wsCount: 1,
-    tag: '1 Workshop',
-    tagColor: '#F59E0B',
-    tagBg: 'rgba(245,158,11,0.08)',
-    tagBorder: 'rgba(245,158,11,0.2)',
-    workshops: [
-      { salon: 'D', title: 'Afet Yönetiminde YZ: Erken Uyarı ve Risk Analizi', araclar: 'ESRI ArcGIS AI, Python (LSTM), OpenStreetMap AI', desc: 'YZ destekli afet erken uyarı, drone/sensör verisi analizi, karar destek sistemleri.' },
-    ],
-  },
-  {
-    no: '04',
-    emoji: '💳',
-    bolum: 'Finans – Bankacılık ve Sigortacılık Bölümü',
-    programlar: ['Bankacılık ve Sigortacılık'],
-    wsCount: 1,
-    tag: '1 Workshop',
-    tagColor: '#10b981',
-    tagBg: 'rgba(16,185,129,0.08)',
-    tagBorder: 'rgba(16,185,129,0.2)',
-    workshops: [
-      { salon: 'E', title: 'Fintech ve YZ: Kredi, Risk ve Dolandırıcılık Tespiti', araclar: 'Python (XGBoost, SHAP), Finans Lab araçları', desc: 'Makine öğrenmesi ile kredi skorlaması, gerçek zamanlı dolandırıcılık tespiti.' },
-    ],
-  },
-  {
-    no: '05',
-    emoji: '🎨',
-    bolum: 'Tasarım Bölümü',
-    programlar: ['Grafik Tasarımı'],
-    wsCount: 1,
-    tag: '1 Workshop',
-    tagColor: '#A78BFA',
-    tagBg: 'rgba(167,139,250,0.1)',
-    tagBorder: 'rgba(167,139,250,0.2)',
-    workshops: [
-      { salon: 'F', title: 'Generatif YZ ile Grafik Tasarım', araclar: 'Canva AI, Adobe Firefly, DALL-E 3, Ideogram', desc: 'Logo, afiş ve dijital içerik üretimi; YZ destekli renk ve kompozisyon önerileri.' },
-    ],
-  },
-  {
-    no: '06',
-    emoji: '✈️',
-    bolum: 'Ulaştırma Hizmetleri Bölümü',
-    programlar: ['Sivil Hava Ulaştırma İşletmeciliği', 'Posta Hizmetleri'],
-    wsCount: 1,
-    tag: '1 Workshop',
-    tagColor: '#F59E0B',
-    tagBg: 'rgba(245,158,11,0.08)',
-    tagBorder: 'rgba(245,158,11,0.2)',
-    workshops: [
-      { salon: 'G', title: 'Havacılık ve Posta Hizmetlerinde YZ', araclar: 'Python (OR-Tools), IBM Decision Optimization', desc: 'Rota optimizasyonu, uçuş zamanı tahmini, otonom drone lojistiği.' },
-    ],
-  },
-  {
-    no: '07',
-    emoji: '🎬',
-    bolum: 'Görsel, İşitsel Teknikler ve Medya Yapımcılığı Bölümü',
-    programlar: ['Fotoğrafçılık ve Kameramanlık', 'Görsel İletişim'],
-    wsCount: 1,
-    tag: '1 Workshop',
-    tagColor: '#10b981',
-    tagBg: 'rgba(16,185,129,0.08)',
-    tagBorder: 'rgba(16,185,129,0.2)',
-    workshops: [
-      { salon: 'H', title: 'Medya Üretiminde Yapay Zekâ', araclar: 'Runway ML, ElevenLabs, Topaz AI, CapCut AI', desc: 'Video düzenleme otomasyonu, AI seslendirme, görsel içerik üretimi.' },
-    ],
-  },
-  {
-    no: '08',
-    emoji: '📦',
-    bolum: 'Yönetim ve Organizasyon Bölümü',
-    programlar: ['Lojistik'],
-    wsCount: 1,
-    tag: '1 Workshop',
-    tagColor: '#A78BFA',
-    tagBg: 'rgba(167,139,250,0.1)',
-    tagBorder: 'rgba(167,139,250,0.2)',
-    workshops: [
-      { salon: 'I', title: 'Lojistik 4.0: YZ ile Tedarik Zinciri Yönetimi', araclar: 'Python (Prophet, OR-Tools), SAP AI, Power BI AI', desc: 'YZ destekli talep tahmini, depo otomasyonu, son mil teslimat optimizasyonu.' },
-    ],
-  },
-  {
-    no: '09',
-    emoji: '🎮',
-    bolum: 'Yazılım, Uygulama Geliştirme ve Çözümleme Bölümü',
-    programlar: ['Oyun Geliştirme ve Programlama'],
-    wsCount: 1,
-    tag: '1 Workshop',
-    tagColor: '#F59E0B',
-    tagBg: 'rgba(245,158,11,0.08)',
-    tagBorder: 'rgba(245,158,11,0.2)',
-    workshops: [
-      { salon: 'J', title: 'Oyun Geliştirmede YZ: NPC Davranışı ve Prosedürel İçerik', araclar: 'Unity ML-Agents, Promethean AI, GitHub Copilot', desc: 'Akıllı NPC geliştirme, prosedürel harita/level üretimi, YZ destekli test otomasyonu.' },
-    ],
-  },
-];
+import { supabase } from '@/lib/supabase';
 
 export default function OdakAlanlariPage() {
+  const [bolumler, setBolumler] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchAreas = async () => {
+      const { data } = await supabase
+        .from('odak_alanlari')
+        .select('*')
+        .eq('visible', true)
+        .order('sort_order', { ascending: true });
+      setBolumler(data || []);
+      setLoading(false);
+    };
+    fetchAreas();
+  }, []);
+
+  const totalWs = bolumler.reduce((sum, b) => sum + (b.ws_count || 0), 0);
+
   return (
     <>
       <div className="page-hero">
@@ -147,7 +33,7 @@ export default function OdakAlanlariPage() {
             <span>Odak Alanları</span>
           </div>
           <h1 className="page-title">
-            9 Bölüm, <span className="gradient-text">11 Workshop</span>
+            {bolumler.length} Bölüm, <span className="gradient-text">{totalWs} Workshop</span>
           </h1>
           <p className="page-desc">
             Mucur MYO&apos;nun tüm bölümleri kendi uzmanlık alanlarıyla örtüşen yapay zeka workshoplarıyla çalıştayda yer alıyor. Her workshop uygulamalı, interaktif ve proje tabanlı.
@@ -158,42 +44,47 @@ export default function OdakAlanlariPage() {
 
       <section style={{ padding: '20px 0 100px' }}>
         <div className="container">
-          <div className="odak-grid">
-            {BOLUMLER.map(b => (
-              <div key={b.no} className="odak-card">
-                <div className="odak-card-top">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div className="odak-emoji">{b.emoji}</div>
-                    <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--text-tertiary)', letterSpacing: '1px' }}>BÖLÜM {b.no}</span>
-                  </div>
-                  <span className="odak-tag" style={{ background: b.tagBg, borderColor: b.tagBorder, color: b.tagColor }}>{b.tag}</span>
-                </div>
-
-                <h2 className="odak-title">{b.bolum}</h2>
-
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                  {b.programlar.map(p => (
-                    <span key={p} style={{ fontSize: '0.72rem', padding: '3px 8px', borderRadius: '6px', background: 'var(--icon-bg)', border: '1px solid var(--icon-border)', color: 'var(--text-secondary)' }}>{p}</span>
-                  ))}
-                </div>
-
-                <div className="odak-details">
-                  {b.workshops.map(w => (
-                    <div key={w.salon} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '0.65rem', fontWeight: 800, color: b.tagColor, letterSpacing: '1px', flexShrink: 0 }}>SALON {w.salon}</span>
-                        <span style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.3 }}>{w.title}</span>
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-tertiary)' }}>Yükleniyor...</div>
+          ) : (
+            <div className="odak-grid">
+              {bolumler.map(b => {
+                const workshops = Array.isArray(b.workshops) ? b.workshops : [];
+                const programlar = Array.isArray(b.programlar) ? b.programlar : [];
+                return (
+                  <div key={b.id} className="odak-card">
+                    <div className="odak-card-top">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div className="odak-emoji">{b.emoji}</div>
+                        <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--text-tertiary)', letterSpacing: '1px' }}>BÖLÜM {b.no}</span>
                       </div>
-                      <p style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)', lineHeight: 1.5, margin: 0 }}>{w.desc}</p>
-                      <div style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', padding: '4px 8px', background: 'var(--code-bg)', borderRadius: '6px', marginTop: '2px' }}>
-                        🛠 {w.araclar}
-                      </div>
+                      <span className="odak-tag" style={{ background: b.tag_bg, borderColor: b.tag_border, color: b.tag_color }}>{b.tag}</span>
                     </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+                    <h2 className="odak-title">{b.bolum}</h2>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                      {programlar.map(p => (
+                        <span key={p} style={{ fontSize: '0.72rem', padding: '3px 8px', borderRadius: '6px', background: 'var(--icon-bg)', border: '1px solid var(--icon-border)', color: 'var(--text-secondary)' }}>{p}</span>
+                      ))}
+                    </div>
+                    <div className="odak-details">
+                      {workshops.map(w => (
+                        <div key={w.salon} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span style={{ fontSize: '0.65rem', fontWeight: 800, color: b.tag_color, letterSpacing: '1px', flexShrink: 0 }}>SALON {w.salon}</span>
+                            <span style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.3 }}>{w.title}</span>
+                          </div>
+                          <p style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)', lineHeight: 1.5, margin: 0 }}>{w.desc}</p>
+                          <div style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', padding: '4px 8px', background: 'var(--code-bg)', borderRadius: '6px', marginTop: '2px' }}>
+                            🛠 {w.araclar}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
 
           {/* AÇIK SEANS */}
           <div style={{ border: '1px solid rgba(16,185,129,0.2)', borderRadius: 'var(--radius-lg)', padding: '32px', background: 'rgba(16,185,129,0.04)', marginBottom: '48px' }}>
@@ -215,7 +106,7 @@ export default function OdakAlanlariPage() {
             </div>
           </div>
 
-          {/* TEKNOFEST PROJE HAZIRLAMA */}
+          {/* TEKNOFEST */}
           <div style={{ border: '1px solid rgba(167,139,250,0.2)', borderRadius: 'var(--radius-lg)', padding: '32px', background: 'rgba(167,139,250,0.04)', marginBottom: '48px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
               <span style={{ fontSize: '1.8rem' }}>🚀</span>
@@ -225,7 +116,7 @@ export default function OdakAlanlariPage() {
               </div>
             </div>
             <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.7, margin: '0 0 12px' }}>
-              Teknofest yarışmalarına yönelik proje fikri geliştirme, başvuru süreci, takım oluşturma ve proje yönetimi konularında uygulamalı workshop. Tüm bölümlerden öğrenci ve öğretim elemanlarına açıktır.
+              Teknofest yarışmalarına yönelik proje fikri geliştirme, başvuru süreci, takım oluşturma ve proje yönetimi konularında uygulamalı workshop.
             </p>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
               <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>👥 Kontenjan: 30 kişi</span>
