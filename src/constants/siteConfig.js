@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: 'Mucur AI Days',
-  fullName: 'Yapay Zeka Günleri Çalıştayı',
+  name: 'Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri',
+  fullName: '1. Yapay Zeka Günleri Çalıştayı',
   description: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu\'nun 9 bölüm ve 14 programını bir araya getiren 3 günlük yapay zeka çalıştayı.',
   url: 'https://mucur-ai-days.vercel.app',
 
   // ETKİNLİK BİLGİLERİ
   date: '2026',
-  dateRange: '____/____/2026 – ____/____/2026',
+  dateRange: '4–6 Mayıs 2026',
   duration: '3 Gün',
   location: 'Mucur MYO, Kırşehir',
   venue: 'Kırşehir Ahi Evran Üniversitesi, Mucur Meslek Yüksekokulu Konferans Salonu ve Laboratuvarları',

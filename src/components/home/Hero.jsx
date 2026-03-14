@@ -56,8 +56,8 @@ export default function Hero() {
           </div>
 
           <h1>
-            Mucur <span className="gradient-text">Yapay</span><br />
-            <span className="gradient-text">Zeka</span> Günleri
+            Kırşehir Ahi Evran Üniversitesi<br />
+            <span className="gradient-text">1. Yapay Zeka</span> Günleri
           </h1>
 
           <p className="hero-sub">

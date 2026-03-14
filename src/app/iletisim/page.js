@@ -3,12 +3,12 @@ import IletisimForm from '@/components/iletisim/IletisimForm';
 import { siteConfig } from '@/constants/siteConfig';
 
 export const metadata = {
-  title: 'İletişim — Mucur AI Days 2025',
-  description: 'Mucur AI Days 2025 etkinliği iletişim bilgileri ve mesaj formu.',
+  title: 'İletişim — Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri',
+  description: 'Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri etkinliği iletişim bilgileri ve mesaj formu.',
 };
 
 const FAQ = [
-  { q: 'Etkinliğe katılım ücreti var mı?', a: 'Hayır, Mucur AI Days tamamen ücretsiz bir etkinliktir. Kayıt yaptırmak yeterlidir.' },
+  { q: 'Etkinliğe katılım ücreti var mı?', a: 'Hayır, Etkinlik tamamen ücretsiz bir etkinliktir. Kayıt yaptırmak yeterlidir.' },
   { q: "Workshop'lara nasıl kayıt olabilirim?", a: 'Kayıt formunda workshop tercihlerinizi işaretleyebilirsiniz. Kontenjanlar sınırlıdır.' },
   { q: 'Sertifika verilecek mi?', a: 'Evet, etkinliğe katılan herkese dijital katılım sertifikası verilecektir.' },
   { q: 'Otopark imkânı var mı?', a: 'Mucur MYO kampüsünde ücretsiz otopark bulunmaktadır.' },
