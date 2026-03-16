@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { supabase } from '@/lib/supabase';
 
 const WORKSHOPS = [
   { salon: 'A', title: 'YZ Destekli Grafik ve 3B Tasarım', bolum: 'Bilgisayar Teknolojileri Bölümü', oncelik: 'mucur' },
@@ -32,13 +33,42 @@ export default function KayitPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const set = (k, v) => setForm(p => ({ ...p, [k]: v }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1200);
+    setError('');
+
+    const ws1Title = WORKSHOPS.find(w => w.salon === form.ws1)?.title || null;
+    const ws2Title = WORKSHOPS.find(w => w.salon === form.ws2)?.title || null;
+
+    const { error: dbError } = await supabase.from('registrations').insert([
+      {
+        full_name: `${form.ad} ${form.soyad}`,
+        email: form.email,
+        organization: form.kurum || null,
+        participation_type: form.katilimciTuru || null,
+        interest_areas: [ws1Title, ws2Title].filter(Boolean),
+        message: [
+          form.telefon ? `Tel: ${form.telefon}` : null,
+          form.bolum ? `Bölüm: ${form.bolum}` : null,
+          form.unvan ? `Unvan: ${form.unvan}` : null,
+          form.ws1 ? `WS1: Salon ${form.ws1} - ${ws1Title}` : null,
+          form.ws2 ? `WS2: Salon ${form.ws2} - ${ws2Title}` : null,
+        ].filter(Boolean).join(' | '),
+      },
+    ]);
+
+    setLoading(false);
+
+    if (dbError) {
+      setError('Başvuru gönderilirken bir hata oluştu. Lütfen tekrar deneyin.');
+    } else {
+      setSubmitted(true);
+    }
   };
 
   if (submitted) {
@@ -198,6 +228,12 @@ export default function KayitPage() {
                   <span>Evet, KVKK Aydınlatma Metnini okudum ve onaylıyorum. <span className="req">*</span></span>
                 </label>
               </div>
+
+              {error && (
+                <p style={{ color: '#ef4444', fontSize: '0.85rem', textAlign: 'center', marginBottom: '16px' }}>
+                  {error}
+                </p>
+              )}
 
               <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '15px', fontSize: '0.95rem', justifyContent: 'center' }} disabled={loading}>
                 {loading ? 'Gönderiliyor...' : (
