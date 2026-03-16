@@ -22,7 +22,7 @@ export default function Footer() {
                   <path d="M2 12l10 5 10-5" />
                 </svg>
               </div>
-              Kırşehir<span style={{ color: "var(--accent-light)" }}>AI</span>Days
+              Kırşehir<span className="accent">AI</span>Days
             </Link>
             <p>Geleceği kodlayan zihinlerin buluşma noktası. Bilim ve teknoloji ışığında yeni ufuklara.</p>
           </div>
