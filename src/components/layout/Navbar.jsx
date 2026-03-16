@@ -26,7 +26,7 @@ export default function Navbar() {
         {/* LOGO */}
         <Link href="/" className="nav-brand">
           <Image src={logoImg} alt="Mucur AI Days" width={42} height={42} style={{ borderRadius: 10 }} />
-          Kırşehir<span style={{ color: "var(--accent-light)" }}>AI</span>Days
+          Kırşehir<span style={{ color: "#A78BFA" }}>AI</span>Days
         </Link>
 
         {/* DESKTOP MENÜ */}
