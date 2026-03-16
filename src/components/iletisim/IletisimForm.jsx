@@ -1,16 +1,34 @@
 'use client';
 import { useState } from 'react';
+import { supabase } from '@/lib/supabase';
 
 export default function IletisimForm() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
-    setTimeout(() => setStatus('success'), 1000);
+    setErrorMsg('');
+
+    const { error } = await supabase.from('contact_messages').insert([
+      {
+        name: form.name,
+        email: form.email,
+        subject: form.subject || null,
+        message: form.message,
+      },
+    ]);
+
+    if (error) {
+      setStatus('error');
+      setErrorMsg('Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.');
+    } else {
+      setStatus('success');
+    }
   };
 
   if (status === 'success') {
@@ -55,6 +73,12 @@ export default function IletisimForm() {
         <label className="ct-label">Mesajınız</label>
         <textarea className="ct-input ct-textarea" name="message" value={form.message} onChange={handleChange} required placeholder="Mesajınızı buraya yazabilirsiniz..." rows={5} />
       </div>
+
+      {errorMsg && (
+        <p style={{ color: '#ef4444', fontSize: '0.82rem', marginBottom: 16, textAlign: 'center' }}>
+          {errorMsg}
+        </p>
+      )}
 
       <button type="submit" className="btn btn-primary ct-submit" disabled={status === 'loading'}>
         {status === 'loading' ? 'Gönderiliyor...' : (

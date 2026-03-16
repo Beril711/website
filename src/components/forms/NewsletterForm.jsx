@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { supabase } from '@/lib/supabase';
 
 export default function NewsletterForm({ source = 'footer' }) {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [status, setStatus] = useState('idle');
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
@@ -13,26 +14,22 @@ export default function NewsletterForm({ source = 'footer' }) {
 
     setStatus('loading');
 
-    try {
-      const res = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source }),
-      });
+    const { error } = await supabase.from('newsletter_subscribers').insert([
+      { email },
+    ]);
 
-      const data = await res.json();
-
-      if (res.ok) {
-        setStatus('success');
-        setMessage(data.message || 'Başarıyla abone oldunuz!');
-        setEmail('');
+    if (error) {
+      if (error.code === '23505') {
+        setStatus('error');
+        setMessage('Bu e-posta adresi zaten kayıtlı.');
       } else {
         setStatus('error');
-        setMessage(data.message || 'Bir hata oluştu, tekrar deneyin.');
+        setMessage('Bir hata oluştu, lütfen tekrar deneyin.');
       }
-    } catch {
-      setStatus('error');
-      setMessage('Bağlantı hatası. Lütfen tekrar deneyin.');
+    } else {
+      setStatus('success');
+      setMessage('Başarıyla abone oldunuz!');
+      setEmail('');
     }
   };
 

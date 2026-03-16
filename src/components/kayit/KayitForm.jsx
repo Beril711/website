@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 export default function KayitForm() {
   const [form, setForm] = useState({
@@ -12,6 +13,7 @@ export default function KayitForm() {
     message: "",
   });
   const [status, setStatus] = useState("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const interestOptions = [
     "Mühendislik ve Robotik",
@@ -38,8 +40,25 @@ export default function KayitForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
-    // TODO: Supabase API bağlantısı
-    setTimeout(() => setStatus("success"), 1000);
+    setErrorMsg("");
+
+    const { error } = await supabase.from("registrations").insert([
+      {
+        full_name: form.fullName,
+        email: form.email,
+        organization: form.organization || null,
+        participation_type: form.participationType || null,
+        interest_areas: form.interestAreas.length > 0 ? form.interestAreas : null,
+        message: form.message || null,
+      },
+    ]);
+
+    if (error) {
+      setStatus("error");
+      setErrorMsg("Başvuru gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
+    } else {
+      setStatus("success");
+    }
   };
 
   if (status === "success") {
@@ -178,6 +197,12 @@ export default function KayitForm() {
           style={{ ...inputStyle, resize: "vertical" }}
         />
       </div>
+
+      {errorMsg && (
+        <p style={{ color: "#ef4444", fontSize: "0.82rem", marginBottom: 16, textAlign: "center" }}>
+          {errorMsg}
+        </p>
+      )}
 
       <button
         type="submit"
