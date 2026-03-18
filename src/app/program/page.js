@@ -15,10 +15,22 @@ const TYPE_COLORS = {
 
 const STATS = [
   { value: 3, label: 'Gün' },
-  { value: 10, label: 'Workshop Salonu' },
-  { value: 9, label: 'Bölüm' },
-  { value: 4, label: 'Sektör Sunumu' },
+  { value: 12, label: 'Workshop' },
+  { value: 24, label: 'Konuşmacı' },
+  { value: 12, label: 'Bildiri' },
 ];
+
+// 2. ve 3. gün alt sekme tanımları
+const SUB_TABS = {
+  gun2: [
+    { id: 'workshop', label: 'Workshop (Salon A-B-C)', gun: 2 },
+    { id: 'konferans', label: 'Konferans Salonu', gun: 4 },
+  ],
+  gun3: [
+    { id: 'poster', label: 'Poster & Kapanış', gun: 3 },
+    { id: 'bildiri', label: 'Bildiri Sunumları', gun: 5 },
+  ],
+};
 
 function AnimatedStat({ value, label, start }) {
   const count = useCountUp(value, 1200, start);
@@ -70,10 +82,42 @@ function SessionRow({ item }) {
   );
 }
 
+function SubTabBar({ tabs, active, onChange }) {
+  return (
+    <div style={{
+      display: 'flex', gap: 8, marginBottom: 24, flexWrap: 'wrap',
+    }}>
+      {tabs.map(t => (
+        <button
+          key={t.id}
+          onClick={() => onChange(t)}
+          style={{
+            padding: '8px 20px',
+            borderRadius: 100,
+            border: '1px solid',
+            fontFamily: 'inherit',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'all 0.3s',
+            borderColor: active.id === t.id ? '#F59E0B' : 'var(--border)',
+            background: active.id === t.id ? 'rgba(245,158,11,0.08)' : 'transparent',
+            color: active.id === t.id ? '#F59E0B' : 'var(--text-tertiary)',
+          }}
+        >
+          {t.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export default function ProgramPage() {
   const [sessions, setSessions] = useState([]);
   const [workshops, setWorkshops] = useState([]);
   const [activeGun, setActiveGun] = useState('gun1');
+  const [subTab2, setSubTab2] = useState(SUB_TABS.gun2[0]);
+  const [subTab3, setSubTab3] = useState(SUB_TABS.gun3[0]);
   const [showWS, setShowWS] = useState(false);
   const [loading, setLoading] = useState(true);
   const [statsRef, statsVisible] = useInView(0.3);
@@ -93,7 +137,6 @@ export default function ProgramPage() {
 
       setSessions(sessionData || []);
 
-      // Workshop listesini odak_alanlari'ndan oluştur
       const wsList = [];
       (wsData || []).forEach(b => {
         (b.workshops || []).forEach(w => {
@@ -112,8 +155,13 @@ export default function ProgramPage() {
     fetchData();
   }, []);
 
-  const gunMap = { gun1: 1, gun2: 2, gun3: 3 };
-  const activeItems = sessions.filter(s => s.gun === gunMap[activeGun]);
+  // Aktif gün numarasını belirle
+  let activeGunNum;
+  if (activeGun === 'gun1') activeGunNum = 1;
+  else if (activeGun === 'gun2') activeGunNum = subTab2.gun;
+  else activeGunNum = subTab3.gun;
+
+  const activeItems = sessions.filter(s => s.gun === activeGunNum);
 
   return (
     <>
@@ -126,7 +174,7 @@ export default function ProgramPage() {
           </div>
           <h1 className="page-title">3 Günlük <span className="gradient-text">Çalıştay Programı</span></h1>
           <p className="page-desc">
-            Açılış töreni ve sektör oturumlarından uygulamalı workshoplara, proje sunumlarından kapanış törenine uzanan yoğun bir program.
+            Açılış töreni ve sektör oturumlarından uygulamalı workshoplara, bildiri sunumlarından kapanış törenine uzanan yoğun bir program.
           </p>
           <div className="prog-stats" ref={statsRef}>
             {STATS.map((s) => (
@@ -139,6 +187,16 @@ export default function ProgramPage() {
       <div className="container" style={{ padding: '40px 40px 100px' }}>
         <DayTabs activeDay={activeGun} onChange={setActiveGun} />
 
+        {/* 2. gün alt sekmeleri */}
+        {activeGun === 'gun2' && (
+          <SubTabBar tabs={SUB_TABS.gun2} active={subTab2} onChange={setSubTab2} />
+        )}
+
+        {/* 3. gün alt sekmeleri */}
+        {activeGun === 'gun3' && (
+          <SubTabBar tabs={SUB_TABS.gun3} active={subTab3} onChange={setSubTab3} />
+        )}
+
         <div className="prog-flow">
           {loading ? (
             <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-tertiary)' }}>Yükleniyor...</div>
@@ -150,32 +208,38 @@ export default function ProgramPage() {
         </div>
 
         {/* WORKSHOP DETAY */}
-        <div className="prog-ws-section">
-          <button className="prog-ws-toggle" onClick={() => setShowWS(!showWS)}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '20px', height: '20px', color: '#F59E0B' }}>
-              <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" />
-            </svg>
-            Workshop Salon Detayları (2. Gün — Salon A–K)
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '16px', height: '16px', marginLeft: 'auto', transform: showWS ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </button>
-          {showWS && (
-            <div className="prog-ws-grid">
-              {workshops.map(ws => (
-                <div key={ws.salon} className="prog-ws-card">
-                  <div className="prog-ws-salon">Salon {ws.salon}</div>
-                  <div className="prog-ws-title">{ws.title}</div>
-                  <div className="prog-ws-bolum">{ws.bolum}</div>
-                  <div className="prog-ws-meta">
-                    <span>🛠 {ws.arac}</span>
-                    <span>👥 Max. 25 kişi · 3 saat</span>
+        {activeGun === 'gun2' && subTab2.id === 'workshop' && (
+          <div className="prog-ws-section">
+            <button className="prog-ws-toggle" onClick={() => setShowWS(!showWS)}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '20px', height: '20px', color: '#F59E0B' }}>
+                <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" />
+              </svg>
+              Workshop Salon Detayları (Salon A-B-C)
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '16px', height: '16px', marginLeft: 'auto', transform: showWS ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            {showWS && (
+              <div className="prog-ws-grid">
+                {workshops.length > 0 ? workshops.map(ws => (
+                  <div key={ws.salon} className="prog-ws-card">
+                    <div className="prog-ws-salon">Salon {ws.salon}</div>
+                    <div className="prog-ws-title">{ws.title}</div>
+                    <div className="prog-ws-bolum">{ws.bolum}</div>
+                    <div className="prog-ws-meta">
+                      <span>🛠 {ws.arac}</span>
+                      <span>👥 Max. 25 kişi</span>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+                )) : (
+                  <div style={{ padding: '20px', color: 'var(--text-tertiary)', fontSize: '0.85rem' }}>
+                    Workshop detayları yükleniyor...
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="odak-cta" style={{ marginTop: '60px' }}>
           <h3>Yerinizi Ayırtın</h3>
