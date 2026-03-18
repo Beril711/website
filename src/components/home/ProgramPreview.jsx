@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { GUN1, GUN2, GUN3 } from '@/constants/programData';
+import { GUN1, GUN2_WORKSHOP, GUN3 } from '@/constants/programData';
 import DayTabs from '@/components/ui/DayTabs';
 
-const DAY_DATA = { gun1: GUN1, gun2: GUN2, gun3: GUN3 };
+const DAY_DATA = { gun1: GUN1, gun2: GUN2_WORKSHOP, gun3: GUN3 };
 
 export default function ProgramPreview() {
   const [activeDay, setActiveDay] = useState('gun1');
