@@ -86,46 +86,6 @@ export default function OdakAlanlariPage() {
             </div>
           )}
 
-          {/* AÇIK SEANS */}
-          <div style={{ border: '1px solid rgba(16,185,129,0.2)', borderRadius: 'var(--radius-lg)', padding: '32px', background: 'rgba(16,185,129,0.04)', marginBottom: '48px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-              <span style={{ fontSize: '1.8rem' }}>🌐</span>
-              <div>
-                <div style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#10b981' }}>SALON K — HERKESE AÇIK</div>
-                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)' }}>Açık Seans – Temel YZ Araçları</div>
-              </div>
-            </div>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.7, margin: '0 0 12px' }}>
-              15:20–16:30 saatleri arasında düzenlenecek Açık Seans, dışarıdan katılan tüm öğrenci ve öğretim elemanlarına yönelik temel yapay zeka araçları workshopudur. ChatGPT, Gemini ve Microsoft Copilot&apos;un günlük hayatta ve mesleki süreçlerde kullanımı uygulamalı olarak işlenecektir.
-            </p>
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>👥 Kontenjan: 30 kişi</span>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>⏱ Süre: 2 saat 10 dk</span>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>🛠 ChatGPT, Gemini, Microsoft Copilot</span>
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#10b981' }}>✅ Ön kayıt zorunludur</span>
-            </div>
-          </div>
-
-          {/* TEKNOFEST */}
-          <div style={{ border: '1px solid rgba(167,139,250,0.2)', borderRadius: 'var(--radius-lg)', padding: '32px', background: 'rgba(167,139,250,0.04)', marginBottom: '48px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-              <span style={{ fontSize: '1.8rem' }}>🚀</span>
-              <div>
-                <div style={{ fontSize: '0.68rem', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', color: '#A78BFA' }}>SALON L — HERKESE AÇIK</div>
-                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)' }}>Teknofest Proje Hazırlama</div>
-              </div>
-            </div>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.7, margin: '0 0 12px' }}>
-              Teknofest yarışmalarına yönelik proje fikri geliştirme, başvuru süreci, takım oluşturma ve proje yönetimi konularında uygulamalı workshop.
-            </p>
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>👥 Kontenjan: 30 kişi</span>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>⏱ Süre: 2 saat</span>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>🛠 Teknofest Portal, Proje Yönetim Araçları</span>
-              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#A78BFA' }}>✅ Herkese Açık</span>
-            </div>
-          </div>
-
           {/* CTA */}
           <div className="odak-cta">
             <h3>Workshop&apos;lara Katılmak İster misiniz?</h3>

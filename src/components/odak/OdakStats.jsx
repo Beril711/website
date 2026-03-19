@@ -13,10 +13,10 @@ function AnimatedStat({ value, label, start }) {
 }
 
 const STATS = [
-    { value: 9, label: 'Bölüm' },
-    { value: 14, label: 'Program' },
-    { value: 11, label: 'Workshop Salonu' },
-    { value: 25, label: 'Kişi/Salon Kontenjan' },
+    { value: 9,   label: 'Bölüm' },
+    { value: 14,  label: 'Program' },
+    { value: 12,  label: 'Workshop Salonu' },
+    { value: 300, label: 'Kişi/Salon Kontenjan' },
 ];
 
 export default function OdakStats() {

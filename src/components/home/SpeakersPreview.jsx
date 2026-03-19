@@ -3,14 +3,14 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const speakers = [
-
-  { id: 2, name: 'Prof. Dr. Mustafa Kasım Karahocagil',   role: 'Kırşehir Ahi Evran Üniversitesi Rektörü',                   org: 'Kırşehir Ahi Evran Üniversitesi' },
-  { id: 3, name: 'Prof. Dr. Murat Çanlı',                 role: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Müdürü',               org: 'Mucur Meslek Yüksekokulu' },
-  { id: 4, name: 'Doç. Dr. Yusuf Ziya Olpak',             role: 'Kırşehir Ahi Evran Üniversitesi Rektör Yardımcısı',        org: 'Kırşehir Ahi Evran Üniversitesi' },
-  { id: 5, name: 'Emre Yeşilbaş',                         role: 'Mucur İlçe Kaymakamı',           org: 'Mucur Kaymakamlığı, Kırşehir' },
-
-  { id: 7, name: 'Orsan Pınar',                           role: 'Mucur İlçe Milli Eğitim Müdürü', org: 'Mucur İlçe Milli Eğitim Müdürlüğü' },
-
+  { id: 2,  name: 'Prof. Dr. Mustafa Kasım Karahocagil', role: 'Kırşehir Ahi Evran Üniversitesi Rektörü',                        org: 'Kırşehir Ahi Evran Üniversitesi' },
+  { id: 3,  name: 'Prof. Dr. Murat Çanlı',               role: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Müdürü', org: 'Mucur Meslek Yüksekokulu' },
+  { id: 4,  name: 'Doç. Dr. Yusuf Ziya Olpak',           role: 'Kırşehir Ahi Evran Üniversitesi Rektör Yardımcısı',               org: 'Kırşehir Ahi Evran Üniversitesi' },
+  { id: 5,  name: 'Emre Yeşilbaş',                       role: 'Mucur İlçe Kaymakamı',                                            org: 'Mucur Kaymakamlığı, Kırşehir' },
+  { id: 9,  name: 'Prof. Dr. Süleyman Ersöz',            role: 'Mühendislik Fakültesi Öğretim Üyesi',                             org: 'Kırıkkale Üniversitesi' },
+  { id: 10, name: 'BTK Akademi Temsilcisi',              role: 'Eğitim ve Teknoloji Uzmanı',                                      org: 'BTK Akademi' },
+  { id: 11, name: 'Petlas CEO',                          role: 'CEO',                                                             org: 'Petlas' },
+  { id: 12, name: 'Çamaş Genel Müdürü',                 role: 'Genel Müdür',                                                     org: 'Çamaş' },
 ];
 
 function usePageSize() {

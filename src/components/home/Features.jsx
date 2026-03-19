@@ -19,8 +19,8 @@ const FEATURES = [
         <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" />
       </svg>
     ),
-    title: '10 Paralel Workshop Salonu',
-    desc: '9 bölüm kendi uzmanlık alanında ayrı bir salon yürütüyor. Salon K tüm dış katılımcılara açık. Her workshop uygulamalı ve proje tabanlı.',
+    title: '3 Paralel Workshop Salonu',
+    desc: '3 bölüm kendi uzmanlık alanında ayrı bir salon yürütüyor. Her workshop uygulamalı ve proje tabanlı.',
     link: '/odak-alanlari',
     linkText: 'Workshop\'ları Keşfet',
   },

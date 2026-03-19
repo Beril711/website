@@ -34,15 +34,6 @@ export const speakers = [
   },
 
   {
-    id: 7,
-    name: "Orsan Pınar",
-    role: "İlçe Milli Eğitim Müdürü",
-    org: "Mucur İlçe Milli Eğitim Müdürlüğü",
-    bio: "Mucur ilçesinde eğitim teknolojilerinin yaygınlaştırılması ve yapay zeka okuryazarlığının geliştirilmesi için çalışmalar yürütmektedir.",
-    topics: ["Eğitim Yönetimi", "Eğitim Teknolojileri"],
-  },
-
-  {
     id: 9,
     name: "Prof. Dr. Süleyman Ersöz",
     role: "Mühendislik Fakültesi",
