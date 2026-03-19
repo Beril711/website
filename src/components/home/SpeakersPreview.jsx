@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const speakers = [
-  { id: 1, name: 'Dr. Öğr. Üyesi Şaban Fındık',          role: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Bilgisayar Teknolojileri Bölüm Başkanı',            org: 'Mucur Meslek Yüksekokulu' },
+
   { id: 2, name: 'Prof. Dr. Mustafa Kasım Karahocagil',   role: 'Kırşehir Ahi Evran Üniversitesi Rektörü',                   org: 'Kırşehir Ahi Evran Üniversitesi' },
   { id: 3, name: 'Prof. Dr. Murat Çanlı',                 role: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Müdürü',               org: 'Mucur Meslek Yüksekokulu' },
   { id: 4, name: 'Doç. Dr. Yusuf Ziya Olpak',             role: 'Kırşehir Ahi Evran Üniversitesi Rektör Yardımcısı',        org: 'Kırşehir Ahi Evran Üniversitesi' },

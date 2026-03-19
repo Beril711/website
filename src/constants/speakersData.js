@@ -1,12 +1,5 @@
 export const speakers = [
-  {
-    id: 1,
-    name: "Dr. Öğr. Üyesi Şaban Fındık",
-    role: "Bölüm Başkanı",
-    org: "Mucur Meslek Yüksekokulu",
-    bio: "Bilgisayar Teknolojileri Bölümü. Yapay zeka odaklı müfredat geliştirme süreçlerini yönetmektedir.",
-    topics: ["Bilgisayar Teknolojileri", "Yazılım Geliştirme"],
-  },
+
   {
     id: 2,
     name: "Prof. Dr. Mustafa Kasım Karahocagil",
