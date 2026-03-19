@@ -33,7 +33,7 @@ export default function OdakAlanlariPage() {
             <span>Odak Alanları</span>
           </div>
           <h1 className="page-title">
-            9 Bölüm, <span className="gradient-text">12 Workshop</span>
+            5 Bölüm, <span className="gradient-text">12 Workshop</span>
           </h1>
           <p className="page-desc">
             Mucur MYO&apos;nun tüm bölümleri kendi uzmanlık alanlarıyla örtüşen yapay zeka workshoplarıyla çalıştayda yer alıyor. Her workshop uygulamalı, interaktif ve proje tabanlı.
