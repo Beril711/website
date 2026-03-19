@@ -1,17 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-
-const speakers = [
-  { id: 2,  name: 'Prof. Dr. Mustafa Kasım Karahocagil', role: 'Kırşehir Ahi Evran Üniversitesi Rektörü',                        org: 'Kırşehir Ahi Evran Üniversitesi' },
-  { id: 3,  name: 'Prof. Dr. Murat Çanlı',               role: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Müdürü', org: 'Mucur Meslek Yüksekokulu' },
-  { id: 4,  name: 'Doç. Dr. Yusuf Ziya Olpak',           role: 'Kırşehir Ahi Evran Üniversitesi Rektör Yardımcısı',               org: 'Kırşehir Ahi Evran Üniversitesi' },
-  { id: 5,  name: 'Emre Yeşilbaş',                       role: 'Mucur İlçe Kaymakamı',                                            org: 'Mucur Kaymakamlığı, Kırşehir' },
-  { id: 9,  name: 'Prof. Dr. Süleyman Ersöz',            role: 'Mühendislik Fakültesi Öğretim Üyesi',                             org: 'Kırıkkale Üniversitesi' },
-  { id: 10, name: 'BTK Akademi Temsilcisi',              role: 'Eğitim ve Teknoloji Uzmanı',                                      org: 'BTK Akademi' },
-  { id: 11, name: 'Petlas CEO',                          role: 'CEO',                                                             org: 'Petlas' },
-  { id: 12, name: 'Çamaş Genel Müdürü',                 role: 'Genel Müdür',                                                     org: 'Çamaş' },
-];
+import { supabase } from '@/lib/supabase';
 
 function usePageSize() {
   const [cols, setCols] = useState(4);
@@ -72,13 +62,29 @@ function ArrowButton({ direction, onClick, disabled }) {
 }
 
 export default function SpeakersPreview() {
+  const [speakers, setSpeakers] = useState([]);
+  const [loading, setLoading] = useState(true);
   const cols = usePageSize();
   const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    const fetchSpeakers = async () => {
+      const { data } = await supabase
+        .from('speakers')
+        .select('id, name, role, org')
+        .eq('visible', true)
+        .order('sort_order', { ascending: true });
+      setSpeakers(data || []);
+      setLoading(false);
+    };
+    fetchSpeakers();
+  }, []);
+
   const totalPages = Math.ceil(speakers.length / cols);
   const visible = speakers.slice(page * cols, page * cols + cols);
 
   useEffect(() => {
-    if (page >= totalPages) setPage(Math.max(0, totalPages - 1));
+    if (page >= totalPages && totalPages > 0) setPage(Math.max(0, totalPages - 1));
   }, [cols, totalPages, page]);
 
   const isMobile = cols <= 2;
@@ -96,81 +102,85 @@ export default function SpeakersPreview() {
           </p>
         </div>
 
-        <div style={{
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          alignItems: 'center',
-          gap: isMobile ? 20 : 16,
-        }}>
-          {!isMobile && (
-            <ArrowButton
-              direction="left"
-              onClick={() => setPage((p) => p - 1)}
-              disabled={page === 0}
-            />
-          )}
-
-          <div
-            className="speakers-grid stagger"
-            style={{
-              flex: 1,
-              display: 'grid',
-              gridTemplateColumns: `repeat(${cols}, 1fr)`,
-              gridAutoRows: isMobile ? 'auto' : 280,
-              minHeight: isMobile ? 280 : 'auto',
-              gap: isMobile ? 12 : 20,
-              width: '100%',
-            }}
-          >
-            {visible.map((s) => (
-              <div key={s.id} className="speaker-card">
-                <div className="speaker-avatar">
-                  <div className="speaker-avatar-inner">
-                    <PersonIcon />
-                  </div>
-                </div>
-                <div className="speaker-name">{s.name}</div>
-                <div className="speaker-role">{s.role}</div>
-                <div className="speaker-org">{s.org}</div>
-              </div>
-            ))}
-            {Array.from({ length: cols - visible.length }).map((_, i) => (
-              <div key={`empty-${i}`} style={{ visibility: 'hidden' }} className="speaker-card" />
-            ))}
-          </div>
-
-          {!isMobile && (
-            <ArrowButton
-              direction="right"
-              onClick={() => setPage((p) => p + 1)}
-              disabled={page >= totalPages - 1}
-            />
-          )}
-
-          {isMobile && totalPages > 1 && (
-            <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
+        {loading ? (
+          <div style={{ textAlign: 'center', padding: '60px', color: 'var(--text-tertiary)' }}>Yükleniyor...</div>
+        ) : (
+          <div style={{
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            alignItems: 'center',
+            gap: isMobile ? 20 : 16,
+          }}>
+            {!isMobile && (
               <ArrowButton
                 direction="left"
                 onClick={() => setPage((p) => p - 1)}
                 disabled={page === 0}
               />
-              <span style={{
-                display: 'flex',
-                alignItems: 'center',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                color: 'var(--text-tertiary)',
-              }}>
-                {page + 1} / {totalPages}
-              </span>
+            )}
+
+            <div
+              className="speakers-grid stagger"
+              style={{
+                flex: 1,
+                display: 'grid',
+                gridTemplateColumns: `repeat(${cols}, 1fr)`,
+                gridAutoRows: isMobile ? 'auto' : 280,
+                minHeight: isMobile ? 280 : 'auto',
+                gap: isMobile ? 12 : 20,
+                width: '100%',
+              }}
+            >
+              {visible.map((s) => (
+                <div key={s.id} className="speaker-card">
+                  <div className="speaker-avatar">
+                    <div className="speaker-avatar-inner">
+                      <PersonIcon />
+                    </div>
+                  </div>
+                  <div className="speaker-name">{s.name}</div>
+                  <div className="speaker-role">{s.role}</div>
+                  <div className="speaker-org">{s.org}</div>
+                </div>
+              ))}
+              {Array.from({ length: cols - visible.length }).map((_, i) => (
+                <div key={`empty-${i}`} style={{ visibility: 'hidden' }} className="speaker-card" />
+              ))}
+            </div>
+
+            {!isMobile && (
               <ArrowButton
                 direction="right"
                 onClick={() => setPage((p) => p + 1)}
                 disabled={page >= totalPages - 1}
               />
-            </div>
-          )}
-        </div>
+            )}
+
+            {isMobile && totalPages > 1 && (
+              <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
+                <ArrowButton
+                  direction="left"
+                  onClick={() => setPage((p) => p - 1)}
+                  disabled={page === 0}
+                />
+                <span style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  fontSize: '0.82rem',
+                  fontWeight: 600,
+                  color: 'var(--text-tertiary)',
+                }}>
+                  {page + 1} / {totalPages}
+                </span>
+                <ArrowButton
+                  direction="right"
+                  onClick={() => setPage((p) => p + 1)}
+                  disabled={page >= totalPages - 1}
+                />
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="section-footer reveal">
           <Link href="/konusmacilar" className="btn-view-all">
