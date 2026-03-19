@@ -39,14 +39,7 @@ export const speakers = [
     bio: "Bölgesel kalkınma projelerinde aktif rol almakta, yapay zekanın kamu hizmetlerindeki potansiyeline destek vermektedir.",
     topics: ["Bölgesel Kalkınma", "Kamu Yönetimi"],
   },
-  {
-    id: 6,
-    name: "Hasan Hüseyin Erden",
-    role: "Kurucu",
-    org: "Marta Teknoloji",
-    bio: "Teknoloji girişimcisi olarak yapay zeka destekli çözümler geliştirmekte ve sektöre yön vermektedir.",
-    topics: ["Teknoloji Girişimciliği", "Yapay Zeka"],
-  },
+
   {
     id: 7,
     name: "Orsan Pınar",
@@ -55,14 +48,7 @@ export const speakers = [
     bio: "Mucur ilçesinde eğitim teknolojilerinin yaygınlaştırılması ve yapay zeka okuryazarlığının geliştirilmesi için çalışmalar yürütmektedir.",
     topics: ["Eğitim Yönetimi", "Eğitim Teknolojileri"],
   },
-  {
-    id: 8,
-    name: "Sercan Reyhanlı",
-    role: "Developer",
-    org: "Google Developer Teamfly",
-    bio: "Google geliştirici ekosisteminde aktif rol alarak yapay zeka araçlarının yazılım geliştirme süreçlerine entegrasyonuna öncülük etmektedir.",
-    topics: ["Yazılım Geliştirme", "Google Teknolojileri"],
-  },
+
   {
     id: 9,
     name: "Prof. Dr. Süleyman Ersöz",
