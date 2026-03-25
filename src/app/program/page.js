@@ -23,7 +23,7 @@ const STATS = [
 // 2. ve 3. gün alt sekme tanımları
 const SUB_TABS = {
   gun2: [
-    { id: 'workshop', label: 'Workshop (Salon A-B-C)', gun: 2 },
+    { id: 'workshop', label: 'Workshop (Salon A-B-C-D)', gun: 2 },
     { id: 'konferans', label: 'Konferans Salonu', gun: 4 },
   ],
   gun3: [
@@ -214,7 +214,7 @@ export default function ProgramPage() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '20px', height: '20px', color: '#F59E0B' }}>
                 <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" />
               </svg>
-              Workshop Salon Detayları (Salon A-B-C)
+              Workshop Salon Detayları (Salon A-B-C-D)
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ width: '16px', height: '16px', marginLeft: 'auto', transform: showWS ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>
                 <path d="M6 9l6 6 6-6" />
               </svg>

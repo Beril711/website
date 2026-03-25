@@ -137,7 +137,7 @@ export const GUN1 = [
 ];
 
 // ════════════════════════════════════════════════════
-//  2. GÜN — Workshop (Salon A-B-C)
+//  2. GÜN — Workshop (Salon A-B-C-D)
 // ════════════════════════════════════════════════════
 
 export const GUN2_WORKSHOP = [
@@ -157,8 +157,8 @@ export const GUN2_WORKSHOP = [
     duration: '90 dk',
     type: 'workshop',
     typeLabel: 'Workshop Oturumu 1',
-    title: 'Workshop Oturumu 1 (Salon A-B-C)',
-    location: 'Salon A-B-C',
+    title: 'Workshop Oturumu 1 (Salon A-B-C-D)',
+    location: 'Salon A-B-C-D',
     desc: 'Paralel workshop seansları — her salon kendi konusunda çalışır',
     speaker: 'Salon Yürütücüleri',
     highlight: true,
@@ -169,8 +169,8 @@ export const GUN2_WORKSHOP = [
     duration: '90 dk',
     type: 'workshop',
     typeLabel: 'Workshop Oturumu 2',
-    title: 'Workshop Oturumu 2 (Salon A-B-C)',
-    location: 'Salon A-B-C',
+    title: 'Workshop Oturumu 2 (Salon A-B-C-D)',
+    location: 'Salon A-B-C-D',
     desc: 'Paralel workshop seansları devamı',
     speaker: 'Salon Yürütücüleri',
     highlight: true,
@@ -190,8 +190,8 @@ export const GUN2_WORKSHOP = [
     duration: '90 dk',
     type: 'workshop',
     typeLabel: 'Workshop Oturumu 3',
-    title: 'Workshop Oturumu 3 (Salon A-B-C)',
-    location: 'Salon A-B-C',
+    title: 'Workshop Oturumu 3 (Salon A-B-C-D)',
+    location: 'Salon A-B-C-D',
     desc: 'Paralel workshop seansları devamı',
     speaker: 'Salon Yürütücüleri',
     highlight: true,
@@ -202,8 +202,8 @@ export const GUN2_WORKSHOP = [
     duration: '105 dk',
     type: 'workshop',
     typeLabel: 'Workshop Oturumu 4',
-    title: 'Workshop Oturumu 4 (Salon A-B-C)',
-    location: 'Salon A-B-C',
+    title: 'Workshop Oturumu 4 (Salon A-B-C-D)',
+    location: 'Salon A-B-C-D',
     desc: 'Paralel workshop seansları — son blok',
     speaker: 'Salon Yürütücüleri',
     highlight: true,
@@ -215,18 +215,18 @@ export const GUN2_WORKSHOP = [
 // ════════════════════════════════════════════════════
 
 export const WORKSHOP_DETAY = [
-  { sira: 1, salon: 'A-B-C', bolum: 'UZEM', konu: 'Eğitimde Prompt Mühendisliği', yurutucu: 'Doç. Dr. Uğur BAŞARMAK' },
-  { sira: 2, salon: 'A-B-C', bolum: 'UZEM', konu: 'Eğitimde Yapay Zeka Tabanlı İçerik Üretimi', yurutucu: 'Doç. Dr. Uğur BAŞARMAK' },
-  { sira: 3, salon: 'A-B-C', bolum: 'UZEM', konu: 'Yapay Zeka ile Sosyal Medya İçerik Tasarımı: Canva Atölyesi', yurutucu: 'Öğr. Gör. Tuğçe Bölükbaş' },
-  { sira: 4, salon: 'A-B-C', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'FIGMA', yurutucu: 'Öğr. Gör. Murat GÜZEL / Dr. Öğr. Üyesi Şaban FINDIK' },
-  { sira: 5, salon: 'A-B-C', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'Claude / Gemini / ChatGPT', yurutucu: 'Öğr. Gör. Murat GÜZEL / Dr. Öğr. Üyesi Şaban FINDIK' },
-  { sira: 6, salon: 'A-B-C', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'NotebookLM', yurutucu: 'Öğr. Gör. Ahmet Burak ÖZKAN / Öğr. Gör. Hüsnü KARADAĞ' },
-  { sira: 7, salon: 'A-B-C', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'AntiGravity', yurutucu: 'Öğr. Gör. Ahmet Burak ÖZKAN / Öğr. Gör. Hüsnü KARADAĞ' },
-  { sira: 8, salon: 'A-B-C', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'Oyun Programlama', yurutucu: 'Öğr. Gör. İlker SEZER / Öğr. Gör. Barış Safa GÜRLER' },
-  { sira: 9, salon: 'A-B-C', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: '2D Animasyon', yurutucu: 'Öğr. Gör. İlker SEZER / Öğr. Gör. Barış Safa GÜRLER' },
-  { sira: 10, salon: 'A-B-C', bolum: 'Bankacılık, Sigortacılık ve Finans Bölümü', konu: 'Warren AI', yurutucu: 'Dr. Öğr. Üyesi Mücahit ÜLGER' },
-  { sira: 11, salon: 'A-B-C', bolum: 'Tasarım', konu: 'Tasarımda YZ Araçları', yurutucu: 'Öğr. Gör. Sezin NİKBAY' },
-  { sira: 12, salon: 'A-B-C', bolum: 'Görsel İletişim', konu: 'NanoBanana', yurutucu: 'Öğr. Gör. Dr. Ali KAYMAK' },
+  { sira: 1, salon: 'A-B-C-D', bolum: 'UZEM', konu: 'Eğitimde Prompt Mühendisliği', yurutucu: 'Doç. Dr. Uğur BAŞARMAK' },
+  { sira: 2, salon: 'A-B-C-D', bolum: 'UZEM', konu: 'Eğitimde Yapay Zeka Tabanlı İçerik Üretimi', yurutucu: 'Doç. Dr. Uğur BAŞARMAK' },
+  { sira: 3, salon: 'A-B-C-D', bolum: 'UZEM', konu: 'Yapay Zeka ile Sosyal Medya İçerik Tasarımı: Canva Atölyesi', yurutucu: 'Öğr. Gör. Tuğçe Bölükbaş' },
+  { sira: 4, salon: 'A-B-C-D', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'FIGMA', yurutucu: 'Öğr. Gör. Murat GÜZEL / Dr. Öğr. Üyesi Şaban FINDIK' },
+  { sira: 5, salon: 'A-B-C-D', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'Claude / Gemini / ChatGPT', yurutucu: 'Öğr. Gör. Murat GÜZEL / Dr. Öğr. Üyesi Şaban FINDIK' },
+  { sira: 6, salon: 'A-B-C-D', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'NotebookLM', yurutucu: 'Öğr. Gör. Ahmet Burak ÖZKAN / Öğr. Gör. Hüsnü KARADAĞ' },
+  { sira: 7, salon: 'A-B-C-D', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'AntiGravity', yurutucu: 'Öğr. Gör. Ahmet Burak ÖZKAN / Öğr. Gör. Hüsnü KARADAĞ' },
+  { sira: 8, salon: 'A-B-C-D', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'Oyun Programlama', yurutucu: 'Öğr. Gör. İlker SEZER / Öğr. Gör. Barış Safa GÜRLER' },
+  { sira: 9, salon: 'A-B-C-D', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: '2D Animasyon', yurutucu: 'Öğr. Gör. İlker SEZER / Öğr. Gör. Barış Safa GÜRLER' },
+  { sira: 10, salon: 'A-B-C-D', bolum: 'Bankacılık, Sigortacılık ve Finans Bölümü', konu: 'Warren AI', yurutucu: 'Dr. Öğr. Üyesi Mücahit ÜLGER' },
+  { sira: 11, salon: 'A-B-C-D', bolum: 'Tasarım', konu: 'Tasarımda YZ Araçları', yurutucu: 'Öğr. Gör. Sezin NİKBAY' },
+  { sira: 12, salon: 'A-B-C-D', bolum: 'Görsel İletişim', konu: 'NanoBanana', yurutucu: 'Öğr. Gör. Dr. Ali KAYMAK' },
 ];
 
 // ════════════════════════════════════════════════════
