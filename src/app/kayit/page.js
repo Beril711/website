@@ -1,7 +1,9 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
+
+const MAX_CAPACITY = 25;
 
 const WORKSHOPS = [
   { salon: 'A', title: 'YZ Destekli Grafik ve 3B Tasarım', bolum: 'Bilgisayar Teknolojileri Bölümü', oncelik: 'mucur' },
@@ -34,6 +36,35 @@ export default function KayitPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [wsCounts, setWsCounts] = useState({});
+
+  // Sayfa yüklendiğinde workshop başvuru sayılarını çek
+  useEffect(() => {
+    const fetchWsCounts = async () => {
+      const { data } = await supabase.from('registrations').select('interest_areas');
+      if (!data) return;
+
+      const counts = {};
+      WORKSHOPS.forEach(w => { counts[w.salon] = 0; });
+
+      data.forEach(reg => {
+        if (Array.isArray(reg.interest_areas)) {
+          reg.interest_areas.forEach(ws => {
+            WORKSHOPS.forEach(w => {
+              if (ws === w.title) {
+                counts[w.salon] = (counts[w.salon] || 0) + 1;
+              }
+            });
+          });
+        }
+      });
+
+      setWsCounts(counts);
+    };
+    fetchWsCounts();
+  }, []);
+
+  const isWsFull = (salon) => (wsCounts[salon] || 0) >= MAX_CAPACITY;
 
   const set = (k, v) => setForm(p => ({ ...p, [k]: v }));
 
@@ -41,6 +72,18 @@ export default function KayitPage() {
     e.preventDefault();
     setLoading(true);
     setError('');
+
+    // Son kontrol: seçilen workshop dolu mu?
+    if (form.ws1 && isWsFull(form.ws1)) {
+      setError(`Salon ${form.ws1} workshop kontenjanı dolmuştur. Lütfen başka bir workshop seçiniz.`);
+      setLoading(false);
+      return;
+    }
+    if (form.ws2 && isWsFull(form.ws2)) {
+      setError(`Salon ${form.ws2} workshop kontenjanı dolmuştur. Lütfen başka bir workshop seçiniz.`);
+      setLoading(false);
+      return;
+    }
 
     const ws1Title = WORKSHOPS.find(w => w.salon === form.ws1)?.title || null;
     const ws2Title = WORKSHOPS.find(w => w.salon === form.ws2)?.title || null;
@@ -178,14 +221,16 @@ export default function KayitPage() {
               {/* WORKSHOP TERCİHLERİ */}
               <div className="form-section">
                 <div className="form-section-title">C. Workshop Tercihleri</div>
-                <p className="form-section-desc">En fazla 2 workshop seçebilirsiniz. Salon K (Açık Seans) herkese açıktır. Diğer salonlar ilgili bölüm öğrencilerine önceliklidir.</p>
+                <p className="form-section-desc">En fazla 2 workshop seçebilirsiniz. Kontenjan 25 kişi ile sınırlıdır — dolan workshoplar seçilemez.</p>
                 <div className="form-row-2">
                   <div className="form-group">
                     <label>1. Tercih</label>
                     <select value={form.ws1} onChange={e => set('ws1', e.target.value)}>
                       <option value="">Seçiniz...</option>
                       {WORKSHOPS.map(w => (
-                        <option key={w.salon} value={w.salon}>Salon {w.salon} — {w.title}</option>
+                        <option key={w.salon} value={w.salon} disabled={isWsFull(w.salon)}>
+                          Salon {w.salon} — {w.title}{isWsFull(w.salon) ? ' (DOLU)' : ` (${wsCounts[w.salon] || 0}/${MAX_CAPACITY})`}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -194,7 +239,9 @@ export default function KayitPage() {
                     <select value={form.ws2} onChange={e => set('ws2', e.target.value)}>
                       <option value="">Seçiniz...</option>
                       {WORKSHOPS.filter(w => w.salon !== form.ws1).map(w => (
-                        <option key={w.salon} value={w.salon}>Salon {w.salon} — {w.title}</option>
+                        <option key={w.salon} value={w.salon} disabled={isWsFull(w.salon)}>
+                          Salon {w.salon} — {w.title}{isWsFull(w.salon) ? ' (DOLU)' : ` (${wsCounts[w.salon] || 0}/${MAX_CAPACITY})`}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -202,18 +249,33 @@ export default function KayitPage() {
 
                 {/* WS TABLOSU */}
                 <div className="ws-table">
-                  {WORKSHOPS.map(w => (
-                    <div key={w.salon} className={`ws-table-row${w.acik ? ' ws-table-row--acik' : ''}`}>
-                      <div className="ws-table-salon">Salon {w.salon}</div>
-                      <div className="ws-table-info">
-                        <div className="ws-table-title">{w.title}</div>
-                        <div className="ws-table-bolum">{w.bolum}</div>
+                  {WORKSHOPS.map(w => {
+                    const full = isWsFull(w.salon);
+                    const count = wsCounts[w.salon] || 0;
+                    return (
+                      <div key={w.salon} className={`ws-table-row${w.acik ? ' ws-table-row--acik' : ''}${full ? ' ws-table-row--full' : ''}`} style={full ? { opacity: 0.5 } : {}}>
+                        <div className="ws-table-salon">Salon {w.salon}</div>
+                        <div className="ws-table-info">
+                          <div className="ws-table-title">{w.title}</div>
+                          <div className="ws-table-bolum">{w.bolum}</div>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, flexShrink: 0 }}>
+                          <div className="ws-table-badge" style={
+                            full
+                              ? { color: '#ef4444', background: 'rgba(239,68,68,0.08)', borderColor: 'rgba(239,68,68,0.2)' }
+                              : w.acik
+                                ? { color: '#10b981', background: 'rgba(16,185,129,0.08)', borderColor: 'rgba(16,185,129,0.2)' }
+                                : {}
+                          }>
+                            {full ? '❌ KONTENJAN DOLDU' : w.acik ? 'Herkese Açık' : 'Bölüme Öncelikli'}
+                          </div>
+                          <span style={{ fontSize: '0.68rem', color: full ? '#ef4444' : 'var(--text-tertiary)', fontWeight: 600 }}>
+                            {count}/{MAX_CAPACITY} kayıt
+                          </span>
+                        </div>
                       </div>
-                      <div className="ws-table-badge" style={w.acik ? { color: '#10b981', background: 'rgba(16,185,129,0.08)', borderColor: 'rgba(16,185,129,0.2)' } : {}}>
-                        {w.acik ? 'Herkese Açık' : 'Bölüme Öncelikli'}
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
@@ -265,9 +327,9 @@ export default function KayitPage() {
                 <div className="kayit-info-title">⚡ Program Özeti</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '4px' }}>
                   {[
-                    { gun: '1. Gün', label: 'Açılış & Sektör', color: '#A78BFA', desc: 'Rektör/Kaymakam konuşmaları, 4 sektör sunumu, panel' },
-                    { gun: '2. Gün', label: 'Workshop Günü', color: '#F59E0B', desc: '10 paralel workshop salonu (A–K), açık seans' },
-                    { gun: '3. Gün', label: 'Sunum & Kapanış', color: '#10b981', desc: 'Jüri sunumları, ödül töreni, sertifika takdimi' },
+                    { gun: '1. Gün', label: 'Açılış & Sektör', color: '#A78BFA', desc: 'Rektör/Kaymakam konuşmaları, paneller, eğitim' },
+                    { gun: '2. Gün', label: 'Workshop Günü', color: '#F59E0B', desc: 'Workshop salonları (A–D), konferans sunumları' },
+                    { gun: '3. Gün', label: 'Sunum & Kapanış', color: '#10b981', desc: 'Poster/bildiri sunumları, ödül töreni, sertifika' },
                   ].map(g => (
                     <div key={g.gun} style={{ padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', background: 'var(--code-bg)' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
@@ -284,8 +346,8 @@ export default function KayitPage() {
                 <div className="kayit-info-title">ℹ️ Önemli Notlar</div>
                 <ul style={{ paddingLeft: '16px', fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginTop: '8px' }}>
                   <li>Laptop/tablet getirmeniz tavsiye edilir</li>
-                  <li>Her workshop max. 25 kişi (Salon K: 30)</li>
-                  <li>Salon K dışı workshoplar ilgili bölüme önceliklidir</li>
+                  <li>Her workshop max. 25 kişi</li>
+                  <li>Kontenjanı dolan workshoplar seçilemez</li>
                   <li>Nihai program e-posta ile iletilecektir</li>
                   <li>Katılım belgesi töreni 3. gün verilecektir</li>
                 </ul>
