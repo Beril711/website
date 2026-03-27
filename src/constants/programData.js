@@ -1,5 +1,5 @@
 // ════════════════════════════════════════════════════
-//  PROGRAM VERİSİ — Kırşehir Ahi Evran Üniversitesi 1. YZ Günleri
+//  PROGRAM VERİSİ — Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri
 //  04–06 Mayıs 2026 · Mucur MYO
 // ════════════════════════════════════════════════════
 
@@ -33,7 +33,7 @@ export const GUN1 = [
     typeLabel: 'Konuşma',
     title: 'Rektör / Rektör Yrd. Açılış Konuşması',
     location: 'Konferans Salonu',
-    desc: 'YZ ve mesleki eğitimde Kırşehir Ahi Evran Üniversitesi\'nin vizyonu',
+    desc: 'Yapay Zeka ve mesleki eğitimde Kırşehir Ahi Evran Üniversitesi\'nin vizyonu',
     speaker: 'Rektörlük — KAEU',
     highlight: true,
   },
@@ -45,7 +45,7 @@ export const GUN1 = [
     typeLabel: 'Konuşma',
     title: 'MYO Müdürü Konuşması',
     location: 'Konferans Salonu',
-    desc: 'Mucur MYO\'nun 9 bölüm bazında YZ stratejisi',
+    desc: 'Mucur MYO\'nun 9 bölüm bazında Yapay Zeka stratejisi',
     speaker: 'MYO Müdürü',
   },
   {
@@ -225,7 +225,7 @@ export const WORKSHOP_DETAY = [
   { sira: 8, salon: 'A-B-C-D', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: 'Oyun Programlama', yurutucu: 'Öğr. Gör. İlker SEZER / Öğr. Gör. Barış Safa GÜRLER' },
   { sira: 9, salon: 'A-B-C-D', bolum: 'Bilgisayar Teknolojileri Bölümü', konu: '2D Animasyon', yurutucu: 'Öğr. Gör. İlker SEZER / Öğr. Gör. Barış Safa GÜRLER' },
   { sira: 10, salon: 'A-B-C-D', bolum: 'Bankacılık, Sigortacılık ve Finans Bölümü', konu: 'Warren AI', yurutucu: 'Dr. Öğr. Üyesi Mücahit ÜLGER' },
-  { sira: 11, salon: 'A-B-C-D', bolum: 'Tasarım', konu: 'Tasarımda YZ Araçları', yurutucu: 'Öğr. Gör. Sezin NİKBAY' },
+  { sira: 11, salon: 'A-B-C-D', bolum: 'Tasarım', konu: 'Tasarımda Yapay Zeka Araçları', yurutucu: 'Öğr. Gör. Sezin NİKBAY' },
   { sira: 12, salon: 'A-B-C-D', bolum: 'Görsel İletişim', konu: 'NanoBanana', yurutucu: 'Öğr. Gör. Dr. Ali KAYMAK' },
 ];
 
@@ -250,7 +250,7 @@ export const GUN2_KONFERANS = [
     duration: '20 dk',
     type: 'konusma',
     typeLabel: 'Konuşma (Sunum)',
-    title: 'YZ Destekli İnsansız Hava Araçları: İHA ile Hassas Tarım Uygulamaları',
+    title: 'Yapay Zeka Destekli İnsansız Hava Araçları: İHA ile Hassas Tarım Uygulamaları',
     location: 'Konferans Salonu',
     desc: 'Yapay Zekâ destekli insansız hava araçları ile hassas tarım uygulamaları',
     speaker: 'Dr. Öğr. Üyesi Veysel GÜL',
@@ -382,7 +382,7 @@ export const GUN2_KONFERANS = [
     duration: '20 dk',
     type: 'konusma',
     typeLabel: 'Konuşma (Sunum)',
-    title: 'YZ ile Beslenmenin Geleceği: Kişiselleştirilmiş Sağlıkta Yeni Dönem',
+    title: 'Yapay Zeka ile Beslenmenin Geleceği: Kişiselleştirilmiş Sağlıkta Yeni Dönem',
     location: 'Konferans Salonu',
     desc: 'Yapay Zekâ ile beslenmenin geleceği ve kişiselleştirilmiş sağlıkta yeni dönem',
     speaker: 'Dyt. Kübra SARI',
@@ -404,7 +404,7 @@ export const GUN2_KONFERANS = [
     duration: '20 dk',
     type: 'konusma',
     typeLabel: 'Konuşma (Sunum)',
-    title: 'YZ ve YZ Destekli Öğrenme Deneyimleri',
+    title: 'Yapay Zeka ve Yapay Zeka Destekli Öğrenme Deneyimleri',
     location: 'Konferans Salonu',
     desc: 'Yapay Zekâ ve yapay Zekâ destekli öğrenme deneyimleri',
     speaker: 'Madlen.io',

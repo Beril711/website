@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 
 const ETIK_ILKELER = [
-  { no: '01', ilke: 'İnsan Merkezlilik', aciklama: 'YZ sistemleri insan refahı ve onuruna hizmet etmek üzere tasarlanmalıdır.' },
-  { no: '02', ilke: 'Şeffaflık ve Açıklanabilirlik', aciklama: 'YZ kararları anlaşılır, izlenebilir ve hesap verebilir olmalıdır. Kara kutu sistemlerde SHAP/LIME araçları kullanılmalıdır.' },
-  { no: '03', ilke: 'Adalet ve Kapsayıcılık', aciklama: 'YZ uygulamaları demografik önyargıdan arındırılmış; herkese eşit hizmet sunacak biçimde geliştirilmelidir.' },
+  { no: '01', ilke: 'İnsan Merkezlilik', aciklama: 'Yapay zeka sistemleri insan refahı ve onuruna hizmet etmek üzere tasarlanmalıdır.' },
+  { no: '02', ilke: 'Şeffaflık ve Açıklanabilirlik', aciklama: 'Yapay zeka kararları anlaşılır, izlenebilir ve hesap verebilir olmalıdır. Kara kutu sistemlerde SHAP/LIME araçları kullanılmalıdır.' },
+  { no: '03', ilke: 'Adalet ve Kapsayıcılık', aciklama: 'Yapay zeka uygulamaları demografik önyargıdan arındırılmış; herkese eşit hizmet sunacak biçimde geliştirilmelidir.' },
   { no: '04', ilke: 'Veri Gizliliği ve Güvenlik', aciklama: "Kişisel veriler KVKK ve GDPR çerçevesinde işlenmeli; workshop'larda anonimleştirilmiş veri tercih edilmelidir." },
-  { no: '05', ilke: 'Hesap Verebilirlik', aciklama: 'YZ sistemlerinin olumsuz sonuçlarından insanlar sorumlu tutulabilmelidir; şikâyet mekanizmaları açık olmalıdır.' },
-  { no: '06', ilke: 'Sürdürülebilirlik', aciklama: 'YZ çözümleri enerji tüketimi ve çevresel etki gözetilerek tasarlanmalıdır.' },
-  { no: '07', ilke: 'Güvenlik', aciklama: 'YZ sistemleri kötüye kullanım, siber saldırı ve istem dışı zarara karşı güvenceli olmalıdır.' },
+  { no: '05', ilke: 'Hesap Verebilirlik', aciklama: 'Yapay zeka sistemlerinin olumsuz sonuçlarından insanlar sorumlu tutulabilmelidir; şikâyet mekanizmaları açık olmalıdır.' },
+  { no: '06', ilke: 'Sürdürülebilirlik', aciklama: 'Yapay zeka çözümleri enerji tüketimi ve çevresel etki gözetilerek tasarlanmalıdır.' },
+  { no: '07', ilke: 'Güvenlik', aciklama: 'Yapay zeka sistemleri kötüye kullanım, siber saldırı ve istem dışı zarara karşı güvenceli olmalıdır.' },
 ];
 
 export default function KurullarPage() {
@@ -128,9 +128,9 @@ export default function KurullarPage() {
         <section id="etik" style={{ paddingTop: 72 }}>
           <div style={{ marginBottom: 28 }}>
             <div className="section-eyebrow" style={{ color: '#F59E0B' }}>Etik Kurulu</div>
-            <h2 className="section-heading">YZ Etik <span className="gradient-text">Kurulu</span></h2>
+            <h2 className="section-heading">Yapay Zeka Etik <span className="gradient-text">Kurulu</span></h2>
             <p className="section-desc">
-              Çalıştayın YZ etiği boyutunu yönetir ve KVKK uyumunu denetler.{' '}
+              Çalıştayın Yapay zeka etiği boyutunu yönetir ve KVKK uyumunu denetler.{' '}
               <a href="mailto:etik@mucurmyo.edu.tr" style={{ color: '#A78BFA', fontWeight: 600 }}>etik@mucurmyo.edu.tr</a>
             </p>
           </div>
@@ -153,7 +153,7 @@ export default function KurullarPage() {
             </table>
           </div>
           <div style={{ marginTop: 40 }}>
-            <h3 className="kurul-sub-title">7 Temel YZ Etik İlkesi</h3>
+            <h3 className="kurul-sub-title">7 Temel Yapay Zeka Etik İlkesi</h3>
             <div className="etik-ilkeler-grid">
               {ETIK_ILKELER.map(p => (
                 <div key={p.no} className="etik-ilke-card">

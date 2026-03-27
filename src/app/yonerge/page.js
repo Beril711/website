@@ -154,7 +154,7 @@ export default function YonergePage() {
                 <div className="yonerge-imza-item">
                   <div className="yonerge-imza-hat" />
                   <div className="yonerge-imza-ad">Etik Kurulu Başkanı</div>
-                  <div className="yonerge-imza-unvan">YZ Etik Kurulu adına</div>
+                  <div className="yonerge-imza-unvan">Yapay Zeka Etik Kurulu adına</div>
                 </div>
               </div>
             </div>

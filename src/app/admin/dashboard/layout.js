@@ -255,7 +255,7 @@ export default function AdminLayout({ children }) {
             <Menu size={24} />
           </button>
           <div style={{ fontSize: "0.8rem", color: "var(--text-tertiary)" }}>
-            Kırşehir Ahi Evran Üniversitesi 1. YZ Günleri — Yönetim Paneli
+            Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri — Yönetim Paneli
           </div>
           <Link
             href="/"
