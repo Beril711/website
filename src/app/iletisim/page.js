@@ -3,8 +3,8 @@ import IletisimForm from '@/components/iletisim/IletisimForm';
 import { siteConfig } from '@/constants/siteConfig';
 
 export const metadata = {
-  title: 'İletişim — Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri',
-  description: 'Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri etkinliği iletişim bilgileri ve mesaj formu.',
+  title: 'İletişim — Kırşehir Ahi Evran Üniversitesi 1. Yapay Zekâ Günleri',
+  description: 'Kırşehir Ahi Evran Üniversitesi 1. Yapay Zekâ Günleri etkinliği iletişim bilgileri ve mesaj formu.',
 };
 
 const FAQ = [

@@ -47,7 +47,7 @@ export default function Features() {
             Neden <span className="gradient-text">Katılmalısınız?</span>
           </h2>
           <p className="section-desc">
-            3 günlük ücretsiz yapay zeka deneyimi: workshoplar, paneller ve proje sunumları.
+            3 günlük ücretsiz yapay zekâ deneyimi: workshoplar, paneller ve proje sunumları.
           </p>
         </div>
 

@@ -81,7 +81,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri. Tüm hakları saklıdır.</span>
+          <span>© 2026 Kırşehir Ahi Evran Üniversitesi 1. Yapay Zekâ Günleri. Tüm hakları saklıdır.</span>
         </div>
       </div>
     </footer>

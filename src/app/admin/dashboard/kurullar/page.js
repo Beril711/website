@@ -167,7 +167,7 @@ export default function AdminKurullar() {
                   ? setForm({ ...form, sorumluluk: e.target.value })
                   : setForm({ ...form, alan: e.target.value })}
                 style={inputStyle}
-                placeholder={activeTab === "duzenleme" ? "Teknik altyapı, AV sistemleri" : "Yapay Zeka, Makine Öğrenmesi"}
+                placeholder={activeTab === "duzenleme" ? "Teknik altyapı, AV sistemleri" : "Yapay Zekâ, Makine Öğrenmesi"}
               />
             </div>
           </div>

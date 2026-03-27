@@ -59,7 +59,7 @@ export default function DashboardHome() {
         Dashboard
       </h1>
       <p style={{ fontSize: "0.88rem", color: "var(--text-tertiary)", marginBottom: 32 }}>
-        Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri yönetim paneline hoş geldiniz.
+        Kırşehir Ahi Evran Üniversitesi 1. Yapay Zekâ Günleri yönetim paneline hoş geldiniz.
       </p>
 
       <div

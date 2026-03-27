@@ -1,6 +1,6 @@
-# 🤖 Mucur AI Days — Yapay Zeka Günleri
+# 🤖 Mucur AI Days — Yapay Zekâ Günleri
 
-**Kırşehir Ahi Evran Üniversitesi, Mucur Meslek Yüksekokulu** tarafından düzenlenen 3 günlük Yapay Zeka Günleri Çalıştayı'nın resmi web sitesi.
+**Kırşehir Ahi Evran Üniversitesi, Mucur Meslek Yüksekokulu** tarafından düzenlenen 3 günlük Yapay Zekâ Günleri Çalıştayı'nın resmi web sitesi.
 
 🔗 **Canlı Site:** [mucur-ai-days.vercel.app](https://mucur-ai-days.vercel.app)
 
@@ -8,7 +8,7 @@
 
 ## 📋 Proje Hakkında
 
-Mucur AI Days, 9 bölüm ve 14 programı bir araya getiren kapsamlı bir yapay zeka etkinliğidir. Bu web sitesi etkinliğin tanıtımı, program akışı, konuşmacı bilgileri, kayıt işlemleri ve iletişim gibi tüm süreçleri dijital ortamda yönetmek amacıyla geliştirilmiştir.
+Mucur AI Days, 9 bölüm ve 14 programı bir araya getiren kapsamlı bir yapay Zekâ etkinliğidir. Bu web sitesi etkinliğin tanıtımı, program akışı, konuşmacı bilgileri, kayıt işlemleri ve iletişim gibi tüm süreçleri dijital ortamda yönetmek amacıyla geliştirilmiştir.
 
 ### Etkinlik Özellikleri
 

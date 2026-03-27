@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: 'Kırşehir Ahi Evran Üniversitesi 1. Yapay Zeka Günleri',
-  fullName: '1. Yapay Zeka Günleri Çalıştayı',
-  description: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu\'nun 9 bölüm ve 14 programını bir araya getiren 3 günlük yapay zeka çalıştayı.',
+  name: 'Kırşehir Ahi Evran Üniversitesi 1. Yapay Zekâ Günleri',
+  fullName: '1. Yapay Zekâ Günleri Çalıştayı',
+  description: 'Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu\'nun 9 bölüm ve 14 programını bir araya getiren 3 günlük yapay Zekâ çalıştayı.',
   url: 'https://mucur-ai-days.vercel.app',
 
   // ETKİNLİK BİLGİLERİ

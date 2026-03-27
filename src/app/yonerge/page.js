@@ -69,7 +69,7 @@ export default function YonergePage() {
           </div>
           <h1 className="page-title">Çalıştay <span className="gradient-text">Yönergesi</span></h1>
           <p className="page-desc">
-            T.C. Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Yapay Zeka Günleri Çalıştayı resmi yönergesi.
+            T.C. Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Yapay Zekâ Günleri Çalıştayı resmi yönergesi.
           </p>
           <div style={{ display: 'flex', gap: 10, marginTop: 20, flexWrap: 'wrap' }}>
             {['Mucur MYO YK Kararı', '3 Günlük Etkinlik', '9 Bölüm · 14 Program'].map(t => (
@@ -85,7 +85,7 @@ export default function YonergePage() {
 
             <div className="yonerge-resmi-kutu">
               <div className="yonerge-resmi-baslik">T.C. KIRŞEHİR AHİ EVRAN ÜNİVERSİTESİ · MUCUR MESLEK YÜKSEKOKULU</div>
-              <div className="yonerge-resmi-alt">YAPAY ZEKA GÜNLERİ ÇALIŞTAYI — RESMİ YÖNERGESİ</div>
+              <div className="yonerge-resmi-alt">YAPAY ZEKÂ GÜNLERİ ÇALIŞTAYI — RESMİ YÖNERGESİ</div>
             </div>
 
             {loading ? (
@@ -96,7 +96,7 @@ export default function YonergePage() {
                 <div className="yonerge-madde" id="amac">
                   <div className="yonerge-madde-baslik"><span className="yonerge-madde-no">Madde 1</span>Amaç ve Kapsam</div>
                   <div className="yonerge-madde-icerik">
-                    <p>{getMadde('amac')?.icerik || 'Bu yönerge; Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu\'nda düzenlenecek "Yapay Zeka Günleri Çalıştayı"nın amaçlarını belirlemek amacıyla hazırlanmıştır.'}</p>
+                    <p>{getMadde('amac')?.icerik || 'Bu yönerge; Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu\'nda düzenlenecek "Yapay Zekâ Günleri Çalıştayı"nın amaçlarını belirlemek amacıyla hazırlanmıştır.'}</p>
                   </div>
                 </div>
 

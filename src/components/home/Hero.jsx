@@ -57,12 +57,12 @@ export default function Hero() {
 
           <h1>
             Kırşehir Ahi Evran Üniversitesi<br />
-            <span className="gradient-text">1. Yapay Zeka</span> Günleri
+            <span className="gradient-text">1. Yapay Zekâ</span> Günleri
           </h1>
 
           <p className="hero-sub">
             Kırşehir Ahi Evran Üniversitesi Mucur MYO'nun 9 bölüm ve 14 programını
-            buluşturan 3 günlük yapay zeka çalıştayı. Sektör oturumları, uygulamalı
+            buluşturan 3 günlük yapay zekâ çalıştayı. Sektör oturumları, uygulamalı
             workshoplar ve proje sunumlarıyla dolu yoğun bir program.
           </p>
 

@@ -50,7 +50,7 @@ export default function KurullarPage() {
             <span>Kurullar</span>
           </div>
           <h1 className="page-title">Çalıştay <span className="gradient-text">Kurulları</span></h1>
-          <p className="page-desc">Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Yapay Zeka Günleri Çalıştayı'nı yöneten üç kurul.</p>
+          <p className="page-desc">Kırşehir Ahi Evran Üniversitesi Mucur Meslek Yüksekokulu Yapay Zekâ Günleri Çalıştayı'nı yöneten üç kurul.</p>
           <div style={{ display: 'flex', gap: 10, marginTop: 20, flexWrap: 'wrap' }}>
             {['#duzenleme','#bilim','#etik'].map((id, i) => (
               <a key={id} href={id} className="btn btn-ghost" style={{ padding: '8px 18px', fontSize: '0.82rem' }}>

@@ -31,7 +31,7 @@ export default function KonusmacilarPage() {
             <span>Konuşmacılar</span>
           </div>
           <h1 className="page-title">Etkinlik <span className="gradient-text">Konuşmacıları</span></h1>
-          <p className="page-desc">Akademi ve sektörün önde gelen isimlerinden oluşan konuşmacı kadromuz. Yapay zeka, veri bilimi ve dijital dönüşüm alanlarında uzman isimleri bir araya getiriyoruz.</p>
+          <p className="page-desc">Akademi ve sektörün önde gelen isimlerinden oluşan konuşmacı kadromuz. Yapay Zekâ, veri bilimi ve dijital dönüşüm alanlarında uzman isimleri bir araya getiriyoruz.</p>
         </div>
       </div>
 
